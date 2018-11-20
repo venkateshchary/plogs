@@ -16,7 +16,7 @@ from plogs import plogger
 logging = plogger()
 ```
 
-### Print Colored Logs
+### Log With Colors 
 ```python3 
 # prints gray 
 logging.info('hello world')
@@ -32,4 +32,26 @@ logging.critical('reponse: 404')
 
 # prints bold
 logging.status('Running Tests:')
+```
+
+### Log Table
+```python3
+class Example:
+    
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+ex1 = Example(1, 2)
+ex2 = Example('a', 'b')
+
+logging.table(ex1, ex2)
+```
+```
++ --------------- +
+|     |  a  |  b  |
++ --------------- +
+| ex1 |  1  |  2  |
+| ex2 | 'a' | 'b' |
++ --------------- +
 ```
