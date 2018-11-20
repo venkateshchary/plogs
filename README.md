@@ -1,4 +1,4 @@
-# plogs -- Pretty Logs
+# plogs — Pretty Logs
 
 ### Description
 
