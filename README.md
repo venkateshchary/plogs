@@ -1,5 +1,4 @@
 # PrettyLogger
----
 
 ### Description
 
