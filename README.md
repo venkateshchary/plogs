@@ -4,7 +4,6 @@
 Pretty Logs is multipurpose logging tool designed to make debugging easier and colorful. 
 
 ### Importing
-Importing and 
 ```python3
 from plogs import plogging
 
