@@ -4,6 +4,11 @@
 # Author: Doug Rudolph
 # Created: October 19, 2018
 
+from collections import OrderedDict
+from utils import Table
+import pprint
+
+
 
 # HEADER: '\033[95m'
 OKBLUE = '\033[94m'
@@ -16,28 +21,62 @@ UNDERLINE = '\033[4m'
 
 log_format = '{}'*3
 
-def success(msg):
-    print(log_format.format(OKGREEN, msg, ENDC))
+class Logger:
+
+    def __init__(self, pretty=True):
+        self.pretty = pretty;
+
+    def success(self, msg):
+        print(log_format.format(OKGREEN, msg, ENDC))
+
+    def info(self, msg):
+        print(log_format.format(OKBLUE, msg, ENDC))
+
+    def warning(self, msg):
+        print(log_format.format(WARNING, msg, ENDC))
+
+    def critical(self, msg):
+        print(log_format.format(FAIL, msg, ENDC))
+
+    def underline(self, msg):
+        print(log_format.format(UNDERLINE, msg, ENDC))
+
+    def bold(self, msg):
+        print(log_format.format(BOLD, msg, ENDC))
+
+    def object(self, obj, params=None, *args):
+        key_val_msg = '{}{}{}: {}{}{}'
+
+        if args:
+            obj_attrs = vars(obj)
+
+            for arg in args:
+                if obj_attrs.get(arg, None):
+                    key = arg
+                    val = obj_attrs[arg]
+                    print(key_val_msg.format(OKBLUE, key, ENDC, FAIL, val, ENDC))
+
+        else:
+            attrs = OrderedDict(vars(obj))
+            for k, v in attrs.items():
+               print(key_val_msg.format(OKBLUE, k, ENDC, FAIL, v, ENDC))
+
+    def dic(self, dic):
+        if self.pretty:
+            pass
+        else:
+            pprint.pprint(dic)
 
 
-def info(msg):
-    print(log_format.format(OKBLUE, msg, ENDC))
+    def table(objs):
+        # define padding
+        # find size of header & footer
+        # print columns
 
 
-def warning(msg):
-    print(log_format.format(WARNING, msg, ENDC))
 
 
-def warning(msg):
-    print(log_format.format(FAIL, msg, ENDC))
-
-
-def underline(msg):
-    print(log_format.format(UNDERLINE, msg, ENDC))
-
-
-def bold(msg):
-    print(log_format.format(BOLD, msg, ENDC))
-
-
-# TODO: log an objects values in a table view
+       """
+       +----------------------------+
+       | thing | test | test | test |
+       """
