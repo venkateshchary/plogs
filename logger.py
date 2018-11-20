@@ -4,45 +4,38 @@
 # Author: Doug Rudolph
 # Created: October 19, 2018
 
-from collections import OrderedDict
 from utils import Table
 import pprint
 
 
+class LogColor:
+    INFO = '\033[94m'
+    SUCCESS = '\033[92m'
+    WARNING = '\033[93m'
+    CRITICAL = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    ENDC = '\033[0m'
 
-# HEADER: '\033[95m'
-OKBLUE = '\033[94m'
-OKGREEN = '\033[92m'
-WARNING = '\033[93m'
-FAIL = '\033[91m'
-ENDC = '\033[0m'
-BOLD = '\033[1m'
-UNDERLINE = '\033[4m'
-
-log_format = '{}'*3
 
 class Logger:
 
     def __init__(self, pretty=True):
-        self.pretty = pretty;
+        self._pretty = pretty
 
-    def success(self, msg):
-        print(log_format.format(OKGREEN, msg, ENDC))
+        self.info = lambda msg: self._log(msg, LogColor.INFO)
+        self.success = lambda msg: self._log(msg, LogColor.SUCCESS)
+        self.warning = lambda msg: self._log(msg, LogColor.WARNING)
+        self.critical = lambda msg: self._log(msg, LogColor.CRITICAL)
+        self.status = lambda msg: self._log(msg, LogColor.BOLD)
 
-    def info(self, msg):
-        print(log_format.format(OKBLUE, msg, ENDC))
+    def _log(self, msg, log_color):
+        log_line = '{}'*3
 
-    def warning(self, msg):
-        print(log_format.format(WARNING, msg, ENDC))
-
-    def critical(self, msg):
-        print(log_format.format(FAIL, msg, ENDC))
-
-    def underline(self, msg):
-        print(log_format.format(UNDERLINE, msg, ENDC))
-
-    def bold(self, msg):
-        print(log_format.format(BOLD, msg, ENDC))
+        if self._pretty:
+            print(log_line.format(log_color, msg, LogColor.ENDC))
+        else:
+            print(msg)
 
     def object(self, obj, params=None, *args):
         key_val_msg = '{}{}{}: {}{}{}'
@@ -57,9 +50,8 @@ class Logger:
                     print(key_val_msg.format(OKBLUE, key, ENDC, FAIL, val, ENDC))
 
         else:
-            attrs = OrderedDict(vars(obj))
-            for k, v in attrs.items():
-               print(key_val_msg.format(OKBLUE, k, ENDC, FAIL, v, ENDC))
+            for key in sorted(attr):
+                print(key_val_msg.format(OKBLUE, key, ENDC, FAIL, attr[key], ENDC))
 
     def dic(self, dic):
         if self.pretty:
@@ -69,14 +61,12 @@ class Logger:
 
 
     def table(objs):
+        pass
         # define padding
         # find size of header & footer
         # print columns
 
-
-
-
-       """
-       +----------------------------+
-       | thing | test | test | test |
-       """
+        """
+        +----------------------------+
+        | thing | test | test | test |
+        """
