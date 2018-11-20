@@ -42,6 +42,7 @@ class Example:
         self.a = a
         self.b = b
 
+
 ex1 = Example(1, 2)
 ex2 = Example('a', 'b')
 
