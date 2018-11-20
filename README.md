@@ -3,6 +3,12 @@
 ### Description
 Pretty Logs is multipurpose logging tool designed to make debugging easier and colorful. 
 
+
+### Install
+```
+pip3 install plogs
+```
+
 ### Importing
 ```python3
 from plogs import plogger
@@ -26,10 +32,4 @@ logging.critical('reponse: 404')
 
 # prints bold
 logging.status('Running Tests:')
-```
-
-
-### Install
-```
-pip3 install plogs
 ```
