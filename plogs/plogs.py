@@ -4,33 +4,37 @@
 # Author: Doug Rudolph
 # Created: October 19, 2018
 
-from logutils import LogLevel, Color, Level
-from enum import enum
+from logutils import LogLevel, Colors, Levels
 import pprint
 
 
 class Logger:
 
-    def __init__(self, pretty=True, show_level=False):
-        self._pretty = pretty
-        self._show_level = show_level
+    def __init__(self, pretty=True, show_levels=True):
 
-        self.info = lambda msg: self._log(msg, LogLevel.INFO, )
-        self.success = lambda msg: self._log(msg, LogLevel.SUCCESS)
-        self.warning = lambda msg: self._log(msg, LogLevel.WARNING)
-        self.critical = lambda msg: self._log(msg, LogLevel.CRITICAL)
-        self.status = lambda msg: self._log(msg, LogLevel.BOLD)
+        self.colors = None if not pretty else Colors.color
+        self.levels =  None if not show_levels else LogLevel.level
+
+        self._pretty = pretty
+        self._show_levels = show_levels
+
+        self.info = lambda msg: self._log(msg, Levels.INFO)
+        self.success = lambda msg: self._log(msg, Levels.SUCCESS)
+        self.warning = lambda msg: self._log(msg, Levels.WARNING)
+        self.critical = lambda msg: self._log(msg, Levels.CRITICAL)
+        self.status = lambda msg: self._log(msg, Levels.STATUS)
 
 
     def _log(self, msg, log_lvl):
-
         log_line = '{}'*3
 
-        if self.show_level:
-            log_line = L
+        if self._show_levels:
+            log_line = self.levels(log_lvl) + log_line  # show log level in line
 
         if self._pretty:
-            print(log_line.format(log_color, msg, LogColor.ENDC))
+            log_color = self.colors(log_lvl)  # gets color based on log level
+            end_color = self.colors('end')  # add to end of line to stop writing in color
+            print(log_line.format(log_color, msg, end_color))
         else:
             print(msg)
 
