@@ -1,7 +1,7 @@
-# plogs — Pretty Logs 
+# plogs — Pretty Logs
 
 ### Description
-Pretty Logs is multipurpose logging tool designed to make debugging colorful and easier. 
+Pretty Logs is multipurpose logging tool designed to make debugging colorful and easier.
 
 
 ### Install
@@ -11,33 +11,33 @@ pip3 install plogs
 
 ### Importing
 ```python3
-from plogs import plogger
+from plogs import PrettyLogger
 
-logging = plogger()
+plog = PrettyLogger()
 ```
 
-### Log With Colors 
-```python3 
-# prints gray 
-logging.info('hello world')
+### Log With Colors
+```python3
+# prints gray
+plog.info('hello world')
 
-# prints green 
-logging.success('tests passed')
+# prints green
+plog.success('tests passed')
 
 # prints orange
-logging.warning('something needs tweaking')
+plog.warning('something needs tweaking')
 
-# prints red 
-logging.critical('reponse: 404')
+# prints red
+plog.critical('reponse: 404')
 
 # prints bold
-logging.status('Running Tests:')
+plog.status('Running Tests:')
 ```
 
 ### Log Table
 ```python3
 class Example:
-    
+
     def __init__(self, a, b):
         self.a = a
         self.b = b
@@ -46,7 +46,7 @@ class Example:
 ex1 = Example(1, 2)
 ex2 = Example('a', 'b')
 
-logging.table(ex1, ex2)
+plog.table(ex1, ex2)
 ```
 ```
 + --------------- +

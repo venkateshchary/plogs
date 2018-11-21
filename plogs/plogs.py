@@ -18,7 +18,7 @@ class LogColor:
     ENDC = '\033[0m'
 
 
-class Logger:
+class PrettyLogger:
 
     def __init__(self, pretty=True):
         self._pretty = pretty
