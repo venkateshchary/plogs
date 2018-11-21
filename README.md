@@ -36,6 +36,9 @@ logging.status('Running Tests:')
 
 ### Log Table
 ```python3
+from plogs import Logger
+logging = Logger()
+
 class Example:
 
     def __init__(self, a, b):
@@ -46,7 +49,7 @@ class Example:
 ex1 = Example(1, 2)
 ex2 = Example('a', 'b')
 
-plog.table(ex1, ex2)
+logging.table(ex1, ex2)
 ```
 ```
 + --------------- +
