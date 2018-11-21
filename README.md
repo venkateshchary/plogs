@@ -21,6 +21,7 @@ logging = Logger()
 # prints gray
 logging.info('hello world')
 
+
 # prints green
 logging.success('tests passed')
 
@@ -34,7 +35,7 @@ logging.critical('reponse: 404')
 logging.status('Running Tests:')
 ```
 
-### Log Table
+### Log Tables
 ```python3
 from plogs import Logger
 logging = Logger()
@@ -51,11 +52,13 @@ ex2 = Example('a', 'b')
 
 logging.table(ex1, ex2)
 ```
+The output would be like
 ```
 + --------------- +
 |     |  a  |  b  |
-+ --------------- +
++ --- | --- | --- +
 | ex1 |  1  |  2  |
++ --- | --- | --- |
 | ex2 | 'a' | 'b' |
 + --------------- +
 ```
