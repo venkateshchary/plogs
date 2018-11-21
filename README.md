@@ -1,7 +1,7 @@
 # plogs — Pretty Logs 
 
 ### Description
-Pretty Logs is multipurpose logging tool designed to make debugging easier and colorful. 
+Pretty Logs is multipurpose logging tool designed to make debugging colorful and easier. 
 
 
 ### Install
