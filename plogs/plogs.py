@@ -5,8 +5,23 @@
 # Created: October 19, 2018
 
 from utils import Table
+from enum import enum
 import pprint
 
+class LogLevel(Enum):
+    INFO = 1
+    SUCCESS = 2
+    WARNING = 3
+    CRITICAL = 4
+    STATUS = 5
+
+    level_map = {
+        INFO: '[INFO]: ',
+        SUCCESS: '[SUCCESS]: ',
+        WARNING: '[WARNING]: ',
+        CRITICAL: '[CRITICAL]: ',
+        STATUS: '[STATUS]: ',
+    }
 
 class LogColor:
     INFO = '\033[94m'
@@ -18,10 +33,11 @@ class LogColor:
     ENDC = '\033[0m'
 
 
-class Logger:
+class PrettyLogger:
 
-    def __init__(self, pretty=True):
+    def __init__(self, pretty=True, show_level=False):
         self._pretty = pretty
+        self._show_level = show_level
 
         self.info = lambda msg: self._log(msg, LogColor.INFO)
         self.success = lambda msg: self._log(msg, LogColor.SUCCESS)
@@ -30,7 +46,11 @@ class Logger:
         self.status = lambda msg: self._log(msg, LogColor.BOLD)
 
     def _log(self, msg, log_color):
+
         log_line = '{}'*3
+
+        if self.show_level:
+            log_line = L
 
         if self._pretty:
             print(log_line.format(log_color, msg, LogColor.ENDC))
