@@ -1,51 +1,28 @@
 # -*- coding: utf8 -*-
 
-# File: parser.py
+# File: plogs.py
 # Author: Doug Rudolph
 # Created: October 19, 2018
 
-from utils import Table
+from logutils import LogLevel, Color, Level
 from enum import enum
 import pprint
 
-class LogLevel(Enum):
-    INFO = 1
-    SUCCESS = 2
-    WARNING = 3
-    CRITICAL = 4
-    STATUS = 5
 
-    level_map = {
-        INFO: '[INFO]: ',
-        SUCCESS: '[SUCCESS]: ',
-        WARNING: '[WARNING]: ',
-        CRITICAL: '[CRITICAL]: ',
-        STATUS: '[STATUS]: ',
-    }
-
-class LogColor:
-    INFO = '\033[94m'
-    SUCCESS = '\033[92m'
-    WARNING = '\033[93m'
-    CRITICAL = '\033[91m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-    ENDC = '\033[0m'
-
-
-class PrettyLogger:
+class Logger:
 
     def __init__(self, pretty=True, show_level=False):
         self._pretty = pretty
         self._show_level = show_level
 
-        self.info = lambda msg: self._log(msg, LogColor.INFO)
-        self.success = lambda msg: self._log(msg, LogColor.SUCCESS)
-        self.warning = lambda msg: self._log(msg, LogColor.WARNING)
-        self.critical = lambda msg: self._log(msg, LogColor.CRITICAL)
-        self.status = lambda msg: self._log(msg, LogColor.BOLD)
+        self.info = lambda msg: self._log(msg, LogLevel.INFO, )
+        self.success = lambda msg: self._log(msg, LogLevel.SUCCESS)
+        self.warning = lambda msg: self._log(msg, LogLevel.WARNING)
+        self.critical = lambda msg: self._log(msg, LogLevel.CRITICAL)
+        self.status = lambda msg: self._log(msg, LogLevel.BOLD)
 
-    def _log(self, msg, log_color):
+
+    def _log(self, msg, log_lvl):
 
         log_line = '{}'*3
 

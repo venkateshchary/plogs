@@ -1,3 +1,9 @@
+# -*- coding: utf8 -*-
+
+# File: tableutils.py
+# Author: Doug Rudolph
+# Created: October 19, 2018
+
 class Table:
     def __init__(self, objs=[]):
         self.objs = objs
