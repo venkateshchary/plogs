@@ -1,8 +1,9 @@
 class Sequence{
 
-    constructor(text, speed, color, elementId){
+    constructor(text, speed, delay, color, elementId){
         this.text = text;
         this.speed = speed;
+        this.delay = delay;
         this.color = color;
         this.elementId = elementId;
 
@@ -16,30 +17,40 @@ class TypeWriter{
 
     constructor(sequences){
         this.sequences = sequences;
+        this.seqCount = 0;
     }
 
-	write(){
+    write(){
 	    if(this.sequences == null || this.sequences.length == 0)
 	        return;
 
-        function writeSequence(sequence){
-            if (sequence.writeLen < sequence.text.length){
-                let elmnt = document.getElementById("line-1");
-                elmnt.innerHTML += sequence.text.charAt(sequence.writeLen);
-                sequence.writeLen++;
-                setTimeout(function(){writeSequence(sequence);}, sequence.speed);
-            }
+        if(this.seqCount < this.sequences.length){
+            this.writeSequence(this.sequences[this.seqCount], this);
         }
-
-
-        let cur_seq = this.sequences[0];
-        writeSequence(cur_seq);
     }
+
+    writeSequence(sequence, writer){
+        if (sequence.writeLen < sequence.text.length){
+            let elmnt = document.getElementById("line-1");
+            elmnt.innerHTML += sequence.text.charAt(sequence.writeLen);
+            sequence.writeLen++;
+            setTimeout(function(){writer.writeSequence(sequence, writer);}, sequence.speed);
+        }
+        else{
+            writer.seqCount++;
+            writer.write();
+        }
+    }
+
 }
 
 
 document.addEventListener("DOMContentLoaded", function(){
-    let seq = new Sequence('pip3 install plogs', 100, null);
-    let writer = new TypeWriter([seq]);
+    let seqs = [
+        new Sequence('1', 100, 100, null, null),
+        new Sequence('2', 100, 100, null, null)
+    ];
+
+    let writer = new TypeWriter(seqs);
     writer.write();
 });
