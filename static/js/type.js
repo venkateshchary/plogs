@@ -81,9 +81,10 @@ class TypeWriter{
         else{
             // destroy cursor
             cursor.innerHTML=null;
-            // move to next sequence
+
+            // pause and go to next sequence
             writer.seqCount++;
-            writer.write();
+            setTimeout(function(){writer.write();}, sequence.delay);
         }
     }
 }
@@ -92,14 +93,17 @@ class TypeWriter{
 document.addEventListener("DOMContentLoaded", function(){
 
     let seqs = [
-        new Sequence("$ ", "pip3 install plogs", 100, 100, null ),
-        new Sequence("$ ", "python3", 100, 100, null),
-        new Sequence(">>> ", "from logging import Logger", 100, 100, null),
-        new Sequence(">>> ", "logging = Logger()", 100, 100, null),
+        new Sequence("$ ", "pip3 install plogs", 100, 500, null ),
+        new Sequence("$ ", "python3", 100, 500, null),
+        new Sequence(">>> ", "", 0, 300, null),
+        new Sequence(">>> ", "from logging import Logger", 100, 300, null),
+        new Sequence(">>> ", "logging = Logger()", 100, 1000, null),
+        new Sequence(">>> ", "", 0, 300, null),
         new Sequence(">>> ", "logging.success('hi')", 100, 100, null),
-        new Sequence(">>> ", "hi", 0, 100, null),
-        new Sequence(">>> ", "logging.critical('sup')", 100, 100, null),
-        new Sequence(">>> ", "sup", 0, 100, null)
+        new Sequence(">>> ", "hi", 0, 1000, null),
+        new Sequence(">>> ", "", 0, 300, null),
+        new Sequence(">>> ", "logging.critical('err')", 100, 100, null),
+        new Sequence(">>> ", "err", 0, 100, null)
     ];
 
     let writer = new TypeWriter(seqs);
