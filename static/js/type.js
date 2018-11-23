@@ -1,5 +1,3 @@
-let term_element = document.getElementById("term");
-
 function createLine(term_icon, line_count){
     let term_cont = document.createElement("div");
     term_cont.setAttribute("class", "term-cont");
@@ -29,12 +27,12 @@ function createLine(term_icon, line_count){
 
 class Sequence{
 
-    constructor(text, speed, delay, color, elementId){
+    constructor(term_icon, text, speed, delay, color){
+        this.term_icon = term_icon;
         this.text = text;
         this.speed = speed;
         this.delay = delay;
         this.color = color;
-        this.elementId = elementId;
 
         // keeps track of how much text has been written on screen
         this.writeLen = 0;
@@ -54,16 +52,17 @@ class TypeWriter{
 	        return;
 
         if(this.seqCount < this.sequences.length){
+            let seq = this.sequences[this.seqCount];
 
             // create new line and append it to terminal
-            let new_line = createLine(" $ ", this.seqCount);
+            let new_line = createLine(seq.term_icon, this.seqCount);
             document.getElementById("term").appendChild(new_line);
 
             // get element where we write text too
             let term_text = document.getElementById(this.seqCount);
 
             // write sequence to new line
-            this.writeSequence(this.sequences[this.seqCount], term_text, this);
+            this.writeSequence(seq, term_text, this);
         }
     }
 
@@ -77,23 +76,27 @@ class TypeWriter{
             setTimeout(function(){writer.writeSequence(sequence, term_text, writer);}, sequence.speed);
         }
         else{
+            // destroy cursor
+
+            // move to next sequence
             writer.seqCount++;
             writer.write();
         }
     }
-
 }
 
 
 document.addEventListener("DOMContentLoaded", function(){
 
     let seqs = [
-        new Sequence("pip3 install plogs", 100, 100, null, null),
-        new Sequence("python3", 100, 100, null, null),
-        new Sequence("from logging import Logger", 100, 100, null, null),
-        new Sequence("logging = Logger()", 100, 100, null, null),
-        new Sequence("logging.success('hi')", 100, 100, null, null),
-        new Sequence("logging.warnning('this is plogs')", 100, 100, null, null),
+        new Sequence("$ ", "pip3 install plogs", 100, 100, null ),
+        new Sequence("$ ", "python3", 100, 100, null),
+        new Sequence(">>> ", "from logging import Logger", 100, 100, null),
+        new Sequence(">>> ", "logging = Logger()", 100, 100, null),
+        new Sequence(">>> ", "logging.success('hi')", 100, 100, null),
+        new Sequence(">>> ", "hi", 0, 100, null),
+        new Sequence(">>> ", "logging.critical('sup')", 100, 100, null),
+        new Sequence(">>> ", "sup", 0, 100, null)
     ];
 
     let writer = new TypeWriter(seqs);
