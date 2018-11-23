@@ -88,8 +88,12 @@ class TypeWriter{
 document.addEventListener("DOMContentLoaded", function(){
 
     let seqs = [
-        new Sequence('pip3 install plogs', 100, 100, null, null)
-        //new Sequence('python3', 100, 100, null, null)
+        new Sequence("pip3 install plogs", 100, 100, null, null),
+        new Sequence("python3", 100, 100, null, null),
+        new Sequence("from logging import Logger", 100, 100, null, null),
+        new Sequence("logging = Logger()", 100, 100, null, null),
+        new Sequence("logging.success('hi')", 100, 100, null, null),
+        new Sequence("logging.warnning('this is plogs')", 100, 100, null, null),
     ];
 
     let writer = new TypeWriter(seqs);
