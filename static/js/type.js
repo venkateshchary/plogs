@@ -1,4 +1,4 @@
-function createLine(term_icon, line_count){
+function createLine(term_icon, color, line_count){
     let term_cont = document.createElement("div");
     term_cont.setAttribute("class", "term-cont");
 
@@ -12,6 +12,7 @@ function createLine(term_icon, line_count){
     let term_cmd = document.createElement("span");
     term_cmd.setAttribute("class", "term-cmd current");
     term_cmd.id = line_count.toString();
+    if(color != null) term_cmd.style.color = color;
 
     let term_caret = document.createElement("span");
     term_caret.setAttribute("class", "term-caret");
@@ -55,7 +56,7 @@ class TypeWriter{
             let seq = this.sequences[this.seqCount];
 
             // create new line and append it to terminal
-            let new_line = createLine(seq.term_icon, this.seqCount);
+            let new_line = createLine(seq.term_icon, seq.color, this.seqCount);
             document.getElementById("term").appendChild(new_line);
 
             // get element where we write text too
@@ -100,10 +101,10 @@ document.addEventListener("DOMContentLoaded", function(){
         new Sequence(">>> ", "logging = Logger()", 100, 1000, null),
         new Sequence(">>> ", "", 0, 300, null),
         new Sequence(">>> ", "logging.success('hi')", 100, 100, null),
-        new Sequence(">>> ", "hi", 0, 1000, null),
+        new Sequence(">>> ", "hi", 0, 1000, "#00EE00"),
         new Sequence(">>> ", "", 0, 300, null),
         new Sequence(">>> ", "logging.critical('err')", 100, 100, null),
-        new Sequence(">>> ", "err", 0, 100, null)
+        new Sequence(">>> ", "err", 0, 100, "red")
     ];
 
     let writer = new TypeWriter(seqs);
