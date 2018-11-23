@@ -94,8 +94,8 @@ class TypeWriter{
 document.addEventListener("DOMContentLoaded", function(){
 
     let seqs = [
-        new Sequence("$ ", "pip3 install plogs", 70, 500, null),
-        new Sequence("$ ", "python3", 100, 500, null),
+        new Sequence("plogs@root$ ", "pip3 -U install plogs", 70, 500, null),
+        new Sequence("plogs@root$ ", "python3", 100, 500, null),
         new Sequence(">>> ", "", 0, 300, null),
         new Sequence(">>> ", "from plogs import Logger", 100, 300, null),
         new Sequence(">>> ", "logging = Logger()", 100, 1000, null),
