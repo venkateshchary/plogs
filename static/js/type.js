@@ -24,12 +24,13 @@ class TypeWriter{
 
         function writeSequence(sequence){
             if (sequence.writeLen < sequence.text.length){
-                let elmnt = document.getElementById("test");
+                let elmnt = document.getElementById("line-1");
                 elmnt.innerHTML += sequence.text.charAt(sequence.writeLen);
                 sequence.writeLen++;
                 setTimeout(function(){writeSequence(sequence);}, sequence.speed);
             }
         }
+
 
         let cur_seq = this.sequences[0];
         writeSequence(cur_seq);
@@ -38,7 +39,7 @@ class TypeWriter{
 
 
 document.addEventListener("DOMContentLoaded", function(){
-    let seq = new Sequence('Diana smells like poop, Diana smells like poop', 100, null);
+    let seq = new Sequence('pip3 install plogs', 100, null);
     let writer = new TypeWriter([seq]);
     writer.write();
 });
