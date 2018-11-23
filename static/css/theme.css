@@ -45,5 +45,15 @@ a:hover{
     margin: auto;
 }
 
+h3{
+    color: #fff;
+}
 
-/*color: #50E3C2;*/
+p{
+    font-size: 14px;
+    color: #ccc;
+}
+
+code{
+    color: #50E3C2;
+}
