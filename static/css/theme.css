@@ -93,9 +93,10 @@ svg {
     font-family: inherit;
     font-size: inherit;
 
-    &.blink {
-        color: transparent;
-    }
+}
+
+.blink {
+    color: transparent;
 }
 
 .term-input-hide {
