@@ -67,7 +67,7 @@ svg {
 .term-cont {
     font-family: 'Inconsolata', monospace;
     color: #fff;
-    /*padding: 0.2rem;*/
+    padding: 0.1rem;
 }
 
 .term-cmd {

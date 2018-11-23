@@ -15,7 +15,7 @@ function createLine(term_icon, line_count){
 
     let term_caret = document.createElement("span");
     term_caret.setAttribute("class", "term-caret");
-    term_caret.innerHTML="&#x2588";
+    term_caret.innerHTML="_";
 
     term_line.appendChild(term_prompt);
     term_line.appendChild(term_cmd);
@@ -61,23 +61,26 @@ class TypeWriter{
             // get element where we write text too
             let term_text = document.getElementById(this.seqCount);
 
+            // pass carrot in to be deleted later
+            let cursor = document.getElementsByClassName("term-caret")[this.seqCount];
+
             // write sequence to new line
-            this.writeSequence(seq, term_text, this);
+            this.writeSequence(seq, term_text, cursor, this);
         }
     }
 
-    writeSequence(sequence, term_text, writer){
+    writeSequence(sequence, term_text, cursor, writer){
 
         if (sequence.writeLen < sequence.text.length){
             // update line we write text too
             term_text.innerHTML += sequence.text.charAt(sequence.writeLen);
 
             sequence.writeLen++;
-            setTimeout(function(){writer.writeSequence(sequence, term_text, writer);}, sequence.speed);
+            setTimeout(function(){writer.writeSequence(sequence, term_text, cursor, writer);}, sequence.speed);
         }
         else{
             // destroy cursor
-
+            cursor.innerHTML=null;
             // move to next sequence
             writer.seqCount++;
             writer.write();
