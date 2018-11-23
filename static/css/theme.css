@@ -25,7 +25,6 @@ a{
 a:hover{
     color: white;
 }
-
 .slogan{
     color: #fff;
     text-align: center;
@@ -45,15 +44,21 @@ a:hover{
     margin: auto;
 }
 
-h3{
+.desc{
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-bottom: 55px;
+}
+
+.desc h3{
     color: #fff;
 }
 
-p{
+.desc p{
     font-size: 14px;
     color: #ccc;
 }
 
-code{
+.desc code{
     color: #50E3C2;
 }
