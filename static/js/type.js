@@ -1,4 +1,6 @@
-function createLine(term_icon){
+let term_element = document.getElementById("term");
+
+function createLine(term_icon, line_count){
     let term_cont = document.createElement("div");
     term_cont.setAttribute("class", "term-cont");
 
@@ -11,6 +13,7 @@ function createLine(term_icon){
 
     let term_cmd = document.createElement("span");
     term_cmd.setAttribute("class", "term-cmd current");
+    term_cmd.id = line_count.toString();
 
     let term_caret = document.createElement("span");
     term_caret.setAttribute("class", "term-caret");
@@ -51,16 +54,27 @@ class TypeWriter{
 	        return;
 
         if(this.seqCount < this.sequences.length){
-            this.writeSequence(this.sequences[this.seqCount], this);
+
+            // create new line and append it to terminal
+            let new_line = createLine(" $ ", this.seqCount);
+            document.getElementById("term").appendChild(new_line);
+
+            // get element where we write text too
+            let term_text = document.getElementById(this.seqCount);
+
+            // write sequence to new line
+            this.writeSequence(this.sequences[this.seqCount], term_text, this);
         }
     }
 
-    writeSequence(sequence, writer){
+    writeSequence(sequence, term_text, writer){
+
         if (sequence.writeLen < sequence.text.length){
-            let elmnt = document.getElementById("line-1");
-            elmnt.innerHTML += sequence.text.charAt(sequence.writeLen);
+            // update line we write text too
+            term_text.innerHTML += sequence.text.charAt(sequence.writeLen);
+
             sequence.writeLen++;
-            setTimeout(function(){writer.writeSequence(sequence, writer);}, sequence.speed);
+            setTimeout(function(){writer.writeSequence(sequence, term_text, writer);}, sequence.speed);
         }
         else{
             writer.seqCount++;
@@ -73,13 +87,9 @@ class TypeWriter{
 
 document.addEventListener("DOMContentLoaded", function(){
 
-
-    let test = createLine("$");
-
-
     let seqs = [
-        new Sequence('pip3 install plogs', 100, 100, null, null),
-        new Sequence('python3', 100, 100, null, null)
+        new Sequence('pip3 install plogs', 100, 100, null, null)
+        //new Sequence('python3', 100, 100, null, null)
     ];
 
     let writer = new TypeWriter(seqs);
