@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(){
         new Sequence("$ ", "pip3 install plogs", 100, 500, null ),
         new Sequence("$ ", "python3", 100, 500, null),
         new Sequence(">>> ", "", 0, 300, null),
-        new Sequence(">>> ", "from logging import Logger", 100, 300, null),
+        new Sequence(">>> ", "from plogs import Logger", 100, 300, null),
         new Sequence(">>> ", "logging = Logger()", 100, 1000, null),
         new Sequence(">>> ", "", 0, 300, null),
         new Sequence(">>> ", "logging.success('hi')", 100, 100, null),
