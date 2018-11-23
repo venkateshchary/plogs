@@ -1,3 +1,29 @@
+function createLine(term_icon){
+    let term_cont = document.createElement("div");
+    term_cont.setAttribute("class", "term-cont");
+
+    let term_line = document.createElement("div");
+    term_line.setAttribute("class", "term-line");
+
+    let term_prompt = document.createElement("span");
+    term_prompt.setAttribute("class", "term-prompt");
+    term_prompt.innerHTML = term_icon;
+
+    let term_cmd = document.createElement("span");
+    term_cmd.setAttribute("class", "term-cmd current");
+
+    let term_caret = document.createElement("span");
+    term_caret.setAttribute("class", "term-caret");
+    term_caret.innerHTML="&#x2588";
+
+    term_line.appendChild(term_prompt);
+    term_line.appendChild(term_cmd);
+    term_line.appendChild(term_caret);
+    term_cont.appendChild(term_line);
+
+    return term_cont;
+}
+
 class Sequence{
 
     constructor(text, speed, delay, color, elementId){
@@ -46,9 +72,14 @@ class TypeWriter{
 
 
 document.addEventListener("DOMContentLoaded", function(){
+
+
+    let test = createLine("$");
+
+
     let seqs = [
-        new Sequence('1', 100, 100, null, null),
-        new Sequence('2', 100, 100, null, null)
+        new Sequence('pip3 install plogs', 100, 100, null, null),
+        new Sequence('python3', 100, 100, null, null)
     ];
 
     let writer = new TypeWriter(seqs);
