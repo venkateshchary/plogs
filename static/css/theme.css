@@ -62,3 +62,19 @@ a:hover{
 .desc code{
     color: #50E3C2;
 }
+
+section{
+    display: block;
+}
+
+.demo{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+::selection {
+    background-color: #B52EAC;
+    color: #fff;
+}
