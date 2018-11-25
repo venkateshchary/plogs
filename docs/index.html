@@ -134,16 +134,8 @@
 from plogs import Logger
 logging = Logger()
 
-
-class Example:
-
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-
-
-ex1 = Example(1, 2)
-ex2 = Example('a', 'b')
+ex1 = Example(a=1, b=2)
+ex2 = Example(a='a', b='b')
 
 logging.table(ex1, ex2)
                 </code></pre>
