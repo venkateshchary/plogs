@@ -89,16 +89,57 @@
 
             <div id="examples" class="desc">
                 <h3>Log with Colors</h3>
-                <p></p>
-                <pre><code># prints gray<br/>logging.info('hello world')</code></pre>
-                <pre><code># prints green<br/>logging.success('tests passed')</code></pre>
-                <pre><code># prints orange<br/>logging.warning('something needs tweaking')</code></pre>
-                <pre><code># prints red<br/>logging.critical('response: 404')</code></pre>
-                <pre><code># prints bold<br/>logging.info('Running Tests:')</code></pre>
+                <p>
+                    Pretty Logs' main feature is color coding different logging levels and statues. The default setlogging
+                    levels are:
+                </p>
+                <br/>
+                <table>
+                    <tr>
+                        <td><code>logging.info</code></td>
+                        <td>gray</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging.success</code></td>
+                        <td>green</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging.warning</code></td>
+                        <td>orange</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging.critical</code></td>
+                        <td>red</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging.status</code></td>
+                        <td>bold</td>
+                    </tr>
+                </table>
             </div>
 
             <div id="" class="desc">
                 <h3>Log Tables</h3>
+                <p> Pretty Logs can print objects in a table and display the variables and attributes each of them are holding. </p>
+                <pre><code>
+from plogs import Logger
+logging = Logger()
+
+
+class Example:
+
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+
+ex1 = Example(1, 2)
+ex2 = Example('a', 'b')
+
+logging.table(ex1, ex2)
+                </code></pre>
+                <p> The output of these two objects would be: </p>
+
                 <pre><code>+ --------------- +<br/>|     |  a  |  b  |<br/>+ --- | --- | --- +<br/>| ex1 |  1  |  2  |<br>+ --- | --- | --- |<br/>| ex2 | 'a' | 'b' |<br/>+ --------------- +</code></pre>
 
         </section>

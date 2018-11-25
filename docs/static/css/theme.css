@@ -68,7 +68,7 @@ a:hover{
 .desc{
     margin-left: 25%;
     margin-right: 25%;
-    padding-bottom: 80px;
+    padding-bottom: 100px;
 }
 
 .desc h3{
@@ -112,5 +112,21 @@ section{
 ::selection {
     background-color: #B52EAC;
     color: #fff;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+th, td{
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    color: #fff;
+    border: 1px solid white;
+    border-color: #444444;
 }
 
