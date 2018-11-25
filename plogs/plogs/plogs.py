@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf8 -*-
 
 # File: plogs.py
@@ -10,7 +11,7 @@ import pprint
 
 class Logger:
 
-    def __init__(self, pretty=True, show_levels=True):
+    def __init__(self, pretty=True, show_levels=True, show_time=True, to_file=False):
 
         self.colors = None if not pretty else Colors.color
         self.levels =  None if not show_levels else LogLevel.level
