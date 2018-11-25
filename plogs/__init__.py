@@ -1,1 +1,2 @@
-name = 'plog'
+name = 'plogs'
+__all__ = ['plogs.py']
