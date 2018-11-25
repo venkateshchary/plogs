@@ -51,6 +51,16 @@ a:hover{
     font-size: 16px;
     border-radius: 5px;
 
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.btn:hover{
+    background-color: #c0c0c0;
+    color: black;
 }
 
 .btn-text{
@@ -65,11 +75,6 @@ a:hover{
     width: 30px;
     display: inline-block;
     padding-right: 3px;
-}
-
-.btn:hover{
-    background-color: #F0F0F0;
-    color: black;
 }
 
 .desc{
