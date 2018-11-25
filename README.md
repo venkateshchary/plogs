@@ -36,6 +36,10 @@ It's recommend to do the following steps inside a `__init__.py` file at the root
 
 ### Log With Colors
 
+Pretty Logs' main feature is color coding different logging levels and statues. The default logging levels are set mapped to:
+
+| Log Level         | Color |
+| ---               | --- |
 | logging.info	    | gray |
 | logging.success	| green |
 | logging.warning	| orange |
