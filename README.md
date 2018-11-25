@@ -1,39 +1,47 @@
 # plogs — Pretty Logs
 
-### Description
-Pretty Logs is multipurpose logging tool designed to make debugging colorful and easier.
+### Project Goals
+In the beginning, the goal of Pretty Logs was to create a colorful logging system designed for scalable projects. Later,
+my vision for Pretty Logs widened in scope to also include useful debugging tools that are found in JavaScript and
+aren't that readily available in Python.
+
+In the future, we anticipate better control to configure logging settings and a debugging log level where debug tools
+can only print to.
 
 
-### Install
+### Installation
+The easiest way to install Pretty Logs is to install via pip.
+
 ```
-pip3 install plogs
+pip3 install -U plogs
 ```
 
-### Importing
+Is also possible to download and import Pretty Logs directly into your project. If you are you looking to do so, I
+recommend cloning the GitHub repository to ensure the plogs module hierarchy is kept the same.
+
+```
+$ git clone https://github.com/11/plogs.git
+```
+
+### Setup
+
+Importing Pretty Logs into your project is quite simple. All that's required is to <b>import plogs</b> and instantiate an instance of <b>Logger</b>.
+
 ```python3
 from plogs import Logger
-
 logging = Logger()
 ```
 
+It's recommend to do the following steps inside a `__init__.py` file at the root level of your project so Pretty Logs can referenced throughout the entire application.
+
 ### Log With Colors
-```python3
-# prints gray
-logging.info('hello world')
 
+| logging.info	    | gray |
+| logging.success	| green |
+| logging.warning	| orange |
+| logging.critical	| red |
+| logging.status	| bold |
 
-# prints green
-logging.success('tests passed')
-
-# prints orange
-logging.warning('something needs tweaking')
-
-# prints red
-logging.critical('reponse: 404')
-
-# prints bold
-logging.status('Running Tests:')
-```
 
 ### Log Tables
 ```python3
