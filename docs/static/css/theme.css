@@ -79,6 +79,11 @@ section{
     height: 100%;
 }
 
+.docs p{
+    line-height: 24px;
+    font-width: 100;
+    font-family: Lato, "Helvetica Neue", Helvetica, arial, sans-serif;
+}
 
 ::selection {
     background-color: #B52EAC;

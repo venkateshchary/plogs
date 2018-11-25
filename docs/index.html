@@ -12,9 +12,9 @@
             <nav>
                 <ul>
                     <li><a href="#">Download</a></li>
-                    <li><a href="https://github.com/11/plogs">GitHub</a></li>
+                    <li><a href="https://github.com/11/plogs" target="_tab">GitHub</a></li>
                     <li><a href="#install">Install</a></li>
-                    <li><a href="#setup">Setup</a></li>
+                    <li><a href="#setup" >Setup</a></li>
                     <li><a href="#">Documentation</a></li>
                     <li><a href="#">Examples</a></li>
                 </ul>
@@ -51,8 +51,13 @@
             <div id="goals" class="desc">
                 <h3>Project Goals</h3>
                 <p>
-                    The goal of Pretty Logs was to create a multipurpose logging system designed for scalable projects coupled
-                    with useful and colorful debugging tools.
+                    In the beginning, the goal of Pretty Logs was to create a colorful logging system designed for scalable projects.
+                    Later, my vision for Pretty Logs widened in scope to also include useful debugging tools that are found in
+                    JavaScript and aren't that readily available in Python.
+                    <br/>
+                    <br/>
+                    In the future, we anticipate better control to configure logging settings and a debugging log level where debug
+                    tools can only print to.
                 </p>
             </div>
 
@@ -63,8 +68,9 @@
 
             <div id="setup" class="desc">
                 <h3>Setup</h3>
-                <code> from plogs import Logger </code>
-                <br/>
+
+                <code>
+                    from plogs import Logger </code>
                 <code> logging = Logger() </code>
             </div>
 
@@ -73,7 +79,31 @@
             </div>
 
             <div id="examples" class="desc">
-                <h3>Examples</h3>
+                <h3>Log with Colors</h3>
+                <p></p>
+                <code>
+                    <pre>
+# prints gray
+logging.info('hello world')
+
+
+# prints green
+logging.success('tests passed')
+
+
+# prints orange
+logging.warning('something needs tweaking')
+
+
+# prints red
+logging.critical('reponse: 404')
+
+
+# prints bold
+logging.status('Running Tests:')
+                    </pre>
+                </code>
+
             </div>
         </section>
 
