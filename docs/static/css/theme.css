@@ -17,6 +17,7 @@ nav ul li{
     padding: 10px;
 }
 
+
 a{
     color: #999999;
     text-decoration: none;
@@ -42,6 +43,7 @@ a:hover{
 .btn-container{
     width: 100%;
     text-align: center;
+    padding-top: 100px;
 }
 
 .btn{
@@ -67,6 +69,20 @@ a:hover{
     display: inline-block;
     font-weight: 700;
     font-size: 14px;
+}
+
+.like-n-follow{
+    padding-top: 35px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.love-btn{
+
+    background-color: #50E3C2;
+    padding: 50px;
+    display: inline-block;
 }
 
 .icon{
@@ -141,3 +157,6 @@ th, td{
     border: 1px solid white;
     border-color: #444444;
 }
+
+
+
