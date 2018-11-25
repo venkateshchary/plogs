@@ -20,11 +20,18 @@ nav ul li{
 a{
     color: #999999;
     text-decoration: none;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
 }
 
 a:hover{
     color: white;
 }
+
+
 
 .slogan{
     color: #fff;
@@ -129,4 +136,3 @@ th, td{
     border: 1px solid white;
     border-color: #444444;
 }
-
