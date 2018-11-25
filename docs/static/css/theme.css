@@ -46,6 +46,20 @@ a:hover{
 
 }
 
+.btn-text{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.icon{
+    vertical-align: center;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    padding-right: 3px;
+}
+
 .btn:hover{
     background-color: #F0F0F0;
     color: black;
@@ -54,7 +68,7 @@ a:hover{
 .desc{
     margin-left: 25%;
     margin-right: 25%;
-    padding-bottom: 55px;
+    padding-bottom: 80px;
 }
 
 .desc h3{
@@ -67,7 +81,13 @@ a:hover{
 }
 
 .desc code{
+    font-family: Menlo,'Courier New',Courier,monospace;
+    font-size: 1em;
+}
+
+pre{
     color: #50E3C2;
+    margin: 30px;
 }
 
 section{
@@ -85,7 +105,12 @@ section{
     font-family: Lato, "Helvetica Neue", Helvetica, arial, sans-serif;
 }
 
+.docs b{
+    color: #fff;
+}
+
 ::selection {
     background-color: #B52EAC;
     color: #fff;
 }
+

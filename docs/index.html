@@ -14,9 +14,9 @@
                     <li><a href="#">Download</a></li>
                     <li><a href="https://github.com/11/plogs" target="_tab">GitHub</a></li>
                     <li><a href="#install">Install</a></li>
+                    <li><a href="#" >Documentation</a></li>
                     <li><a href="#setup" >Setup</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Examples</a></li>
+                    <li><a href="#examples">Examples</a></li>
                 </ul>
             </nav>
 
@@ -42,7 +42,9 @@
             </div>
 
             <div class="btn-container">
-                <a class="btn" href="#"> Download plogs for python3 </a>
+                <a class="btn" href="#">
+                    <span class="btn-text">Download plogs for python3 </span>
+                </a>
             </div>
 
         </section>
@@ -63,19 +65,26 @@
 
             <div id="install" class="desc">
                 <h3>Installation</h3>
-                <code> $ pip3 install plogs </code>
+                <p> The easiest way to install Pretty Logs is to install via pip. </p>
+                <pre><code>$ pip3 install -U plogs</code></pre>
+
+                <p>
+                    Is also possible to download and import Pretty Logs directly into your project. If you are you looking to do
+                    so, I recommend cloning the GitHub repository to ensure the plogs module hierarchy is kept the same.
+                </p>
+                <pre><code>$ git clone <u>https://github.com/11/plogs.git</u></code></pre>
             </div>
 
             <div id="setup" class="desc">
                 <h3>Setup</h3>
-
-                <code>
-                    from plogs import Logger </code>
-                <code> logging = Logger() </code>
-            </div>
-
-            <div id="documentation" class="desc">
-                <h3>Documentation</h3>
+                <p>
+                    Importing Pretty Logs into your project is quite simple. All that's required is to <b>import plogs</b> and
+                    instantiate an instance of <b>Logger</b>.
+                </p>
+                <pre><code>from plogs import Logger <br/>logging = Logger()</code></pre>
+                <p>
+                    It's recommend to do the following steps inside a <b>`__init__.py`</b> file at the root level of your project
+                    so Pretty Logs can referenced throughout the entire application.
             </div>
 
             <div id="examples" class="desc">
