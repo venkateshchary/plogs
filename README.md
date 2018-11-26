@@ -41,10 +41,10 @@ Pretty Logs' main feature is color coding different logging levels and statues. 
 | Log Level         | Color |
 | ---               | --- |
 | logging.info	    | gray |
+| logging.status	| bold |
 | logging.success	| green |
 | logging.warning	| orange |
 | logging.critical	| red |
-| logging.status	| bold |
 
 
 ### Log Tables

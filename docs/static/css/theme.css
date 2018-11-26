@@ -158,5 +158,7 @@ th, td{
     border-color: #444444;
 }
 
-
+.no-select{
+    user-select: none;
+}
 

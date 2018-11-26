@@ -75,13 +75,13 @@
             <div id="install" class="desc">
                 <h3>Installation</h3>
                 <p> The easiest way to install Pretty Logs is to install via pip. </p>
-                <pre><code>$ pip3 install -U plogs</code></pre>
+                <pre><code><span class="no-select">$ </span>pip3 install -U plogs</code></pre>
 
                 <p>
                     Is also possible to download and import Pretty Logs directly into your project. If you are you looking to do
                     so, I recommend cloning the GitHub repository to ensure the plogs module hierarchy is kept the same.
                 </p>
-                <pre><code>$ git clone <u>https://github.com/11/plogs.git</u></code></pre>
+                <pre><code><span class="no-select">$ </span>git clone <u>https://github.com/11/plogs.git</u></code></pre>
             </div>
 
             <div id="setup" class="desc">
@@ -99,14 +99,17 @@
             <div id="examples" class="desc">
                 <h3>Log with Colors</h3>
                 <p>
-                    Pretty Logs' main feature is color coding different logging levels and statues. The default setlogging
-                    levels are:
+                    Pretty Logs' main feature is color coding different logging levels and statues. The default logging levels are:
                 </p>
                 <br/>
                 <table>
                     <tr>
                         <td><code>logging.info</code></td>
                         <td>gray</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging.status</code></td>
+                        <td>bold</td>
                     </tr>
                     <tr>
                         <td><code>logging.success</code></td>
@@ -120,16 +123,12 @@
                         <td><code>logging.critical</code></td>
                         <td>red</td>
                     </tr>
-                    <tr>
-                        <td><code>logging.status</code></td>
-                        <td>bold</td>
-                    </tr>
                 </table>
             </div>
 
             <div id="" class="desc">
                 <h3>Log Tables</h3>
-                <p> Pretty Logs can print objects in a table and display the variables and attributes each of them are holding. </p>
+                <p> Pretty Logs can print objects in a table and display the variables that each is holding. </p>
                 <pre><code>
 ex1 = Example(a=1, b=2)
 ex2 = Example(a='a', b='b')
