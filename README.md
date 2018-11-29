@@ -13,7 +13,7 @@ can only print to.
 The easiest way to install Pretty Logs is to install via pip.
 
 ```
-pip3 install -U plogs
+$ pip3 install -U plogs
 ```
 
 Is also possible to download and import Pretty Logs directly into your project. If you are you looking to do so, I
@@ -32,7 +32,7 @@ from plogs import Logger
 logging = Logger()
 ```
 
-It's recommend to do the following steps inside a `__init__.py` file at the root level of your project so Pretty Logs can referenced throughout the entire application.
+It's recommend to do the following steps inside a `__init__.py` file at the root level of your project so Pretty Logs can be referenced throughout the entire application.
 
 ### Log With Colors
 
