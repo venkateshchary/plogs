@@ -1,9 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
-"""
+
+""" plogs main python module
+
 File: plogs.py
 Author: Doug Rudolph
-Created: October 19, 2018
+Created: November 19, 2018
+
+
+Goals:
+    Pretty Logs is a python module that is meant to color code program logs and log files. The main goals
+    as a package are:
+
+    1.) 6 easy to understand logging level colors that will color code all of the logs.
+        - debug:    Color varies, either no color, or colorcoded object
+        - status:   Bold Gray
+        - info:     White
+        - warning:  Orange
+        - error:
+        - critical: {{Not Sure Yet}}
+
+    2.) Debugging tools that color code built in python objects: Dictionary and List objects.
+    3.) A general set of formatting tools that makes coloring logs intuitive and easy to read.
+
 """
 
 import pprint
@@ -15,14 +34,17 @@ from logutils import LogLevel, Colors, Levels
 
 
 class Logger:
-    """
-    Config Settings:
-        There are two main ways to use Pretty Logs, you can either can send in an already existing logger,
-        and Pretty Logs will map the logging levels to the proper colors schemes. When doing this,
-        a lot of the logging customization is lost, but in return, the original logging settings/formatting is kept,
-        and colors are applied to your logs.
+    """ Config Settings:
+    There are two main ways to use Pretty Logs
 
-        The other way to config pretty logger is to allow Pretty logs to handle the settings.
+    1.) The first option is to send in an already existing logger, and Pretty Logs will map the default
+        logging levels to the proper colors.
+        - NOTE*: when doing this a lot of the logging customization is lost, but in return, the original
+                 logging settings/formatting is kept, and colors are still applied to your logs.
+
+    2.) The other way to config Pretty Logs is to allow Pretty logs to handle all the general logging settings
+        as well as log formatting. By doing this, just be aware that soem formating tools will be not be
+        accessible.
 
     - to_file: stdout or a file
     - pretty: colored or uncolored
