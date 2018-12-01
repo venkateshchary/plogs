@@ -25,35 +25,44 @@ Goals:
 
 """
 
+from logutils import LogLevel, Colors, Levels
+
 import pprint
 import sys
 
-from logutils import LogLevel, Colors, Levels
-
-
-
 
 class Logger:
-    """ Config Settings:
-    There are two main ways to use Pretty Logs
+    """ Logger class description
 
-    1.) The first option is to send in an already existing logger, and Pretty Logs will map the default
-        logging levels to the proper colors.
-        - NOTE*: when doing this a lot of the logging customization is lost, but in return, the original
-                 logging settings/formatting is kept, and colors are still applied to your logs.
+    Logger is the main object that gets interfaced with by the user. Logger as an object accepts all
+    the settings that formats the logs, writes the log text, and colorcodes text,
 
-    2.) The other way to config Pretty Logs is to allow Pretty logs to handle all the general logging settings
-        as well as log formatting. By doing this, just be aware that soem formating tools will be not be
-        accessible.
+    Config Settings:
+        There are two main ways to use Pretty Logs
 
-    - to_file: stdout or a file
-    - pretty: colored or uncolored
-    - show_levels: show levels in output
-    - __: app
-    - show_time
+        1.) The first option is to send in an already existing logger, and Pretty Logs will map the default
+            logging levels to the proper colors.
+            - NOTE*: when doing this a lot of the logging customization is lost, but in return, the original
+                     logging settings/formatting is kept, and colors are still applied to your logs.
+
+        2.) The other way to config Pretty Logs is to allow Pretty logs to handle all the general logging settings
+            as well as log formatting. By doing this, just be aware that soem formating tools will be not be
+            accessible.
+
     """
 
-    def __init__(self, pretty=True, show_levels=True, show_time=True, to_file=False, traditional=False):
+    def __init__(self, pretty=True, show_levels=True, show_time=False, to_file=False, file_location='/var/log/plogs/'):
+        """ Initiliation data for a pretty logger
+
+        Used to configure how the logger writes data to the out
+
+        Args:
+            to_file (boolean): writes to logfile -- or to std_out
+            file_location (str): custom logfile location -- or None
+            pretty (boolean): colored -- uncoloreed
+            show_levels (boolean): show levels in output
+            show_time (boolean): displays timestamoin the beginning of logline
+        """
 
         self.colors = None if not pretty else Colors.color
         self.levels =  None if not show_levels else LogLevel.level
