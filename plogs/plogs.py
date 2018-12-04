@@ -49,6 +49,10 @@ class Logger:
             as well as log formatting. By doing this, just be aware that soem formating tools will be not be
             accessible.
 
+    TODO:
+        * Add tests
+        * Add tables
+        * Add default logging wrapper
     """
 
     def __init__(self, pretty=True, show_levels=True, show_time=False, to_file=False, file_location='/var/log/plogs/'):
@@ -96,7 +100,7 @@ class Logger:
 
         if args:
             obj_attrs = vars(obj)
-
+s
             for arg in args:
                 if obj_attrs.get(arg, None):
                     key = arg
