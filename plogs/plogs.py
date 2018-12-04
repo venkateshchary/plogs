@@ -17,8 +17,8 @@ Goals:
         - status:   Bold Gray
         - info:     White
         - warning:  Orange
-        - error:
-        - critical: {{Not Sure Yet}}
+        - error:    {{Not Sure Yet}}
+        - critical: Red
 
     2.) Debugging tools that color code built in python objects: Dictionary and List objects.
     3.) A general set of formatting tools that makes coloring logs intuitive and easy to read.
@@ -56,8 +56,7 @@ class Logger:
     """
 
     def __init__(self, pretty=True, show_levels=True, show_time=False, to_file=False, file_location='/var/log/plogs/'):
-        """ Initiliation data for a pretty logger
-
+        """ Initiliation data for a pretty logger -
         Used to configure how the logger writes data to the out
 
         Args:
@@ -70,9 +69,11 @@ class Logger:
 
         self.colors = None if not pretty else Colors.color
         self.levels =  None if not show_levels else LogLevel.level
+        self.fstr = None
 
         self._pretty = pretty
         self._show_levels = show_levels
+
 
         self.info = lambda msg: self._log(msg, Levels.INFO)
         self.status = lambda msg: self._log(msg, Levels.STATUS)
@@ -80,6 +81,31 @@ class Logger:
         self.warning = lambda msg: self._log(msg, Levels.WARNING)
         self.critical = lambda msg: self._log(msg, Levels.CRITICAL)
 
+    def format(self, fstr):
+        """ Customizes the output of the log string
+
+        Example:
+            >>> from plogs import Logger
+            >>> logging = Logeer()
+            >>>
+            >>> logging.format(f'{show_time}: {show_levels} - {log}')
+            >>> logging.status('hello world')
+            >>> 2018-12-3 08:04:22: [STATUS] - hello world
+
+        Args:
+            fstr (str): python3 formatted string of output
+        """
+        pass
+
+    def bind(self, logger):
+        """ The purpose of this binding function is to be able to use
+        the default logger that's built into python, along side Pretty
+        Logs
+
+        Args:
+            logger (logging): Instance of built in python logger
+        """
+        pass
 
     def _log(self, msg, log_lvl):
         log_line = '{}'*3
