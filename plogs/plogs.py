@@ -5,6 +5,7 @@ from logutils import LogLevel, Colors, Levels
 
 import pprint
 import sys
+import datetime
 
 
 
@@ -24,9 +25,15 @@ def get_logger():
 class _Logger:
 
     def __init__(self):
-        # instances of Color and levels enum
+        # Instances of Color and Levels enum
         self._colors = Colors.color
         self._levels = LogLevel.level
+
+        # Name of default log file is plogs_<datetime>
+        self._filename = '{}_{}'.format(
+            'plogs',
+            str(datetime.datetime.now().date()),
+        )
 
         # These are the default configs
         self._pretty = True
@@ -37,7 +44,7 @@ class _Logger:
         self._fstr = None
         self._default_logger = None
 
-        # define log functino for each log level
+        # define log function for each log level
         self.info = lambda msg: self._log(msg, Levels.INFO)
         self.status = lambda msg: self._log(msg, Levels.STATUS)
         self.success = lambda msg: self._log(msg, Levels.SUCCESS)
@@ -71,9 +78,14 @@ class _Logger:
 
         # open and write to file if set to
         if self._to_file:
-            sys.stdout = open(self._file_location, 'w+')
+            filedes = f'{self._filename}{self.file_location}'
+            sys.stdout = open(filedes, 'w+')
 
-        print(log + '\n')
+        try:
+            print(log + '\n')
+        except IOError as err:
+            sys,stdout = write
+            print(err)
 
 
     def object(self, obj, params=None, *args):
@@ -93,7 +105,7 @@ class _Logger:
                 print(key_val_msg.format(OKBLUE, key, ENDC, FAIL, attr[key], ENDC))
 
     def dic(self, dic):
-        if self.pretty:
+        if self._pretty:
             pass
         else:
             pprint.pprint(dic)
@@ -104,8 +116,3 @@ class _Logger:
         # define padding
         # find size of header & footer
         # print columns
-
-        """
-        +----------------------------+
-        | thing | test | test | test |
-        """
