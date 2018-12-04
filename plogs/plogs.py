@@ -31,7 +31,19 @@ import pprint
 import sys
 
 
-class Logger:
+_LOGGER_REF = None
+
+
+def get_logger():
+    global _LOGGER_REF
+
+    if _LOGGER_REF is None:
+        _LOGGER_REF = _Logger()
+
+    return _LOGGER_REF
+
+
+class _Logger:
     """ Logger class description
 
     Logger is the main object that gets interfaced with by the user. Logger as an object accepts all
@@ -55,9 +67,6 @@ class Logger:
         * Add default logging wrapper
     """
 
-    # stores a static reference to itself
-    _logger = None
-
     def __init__(self):
         # instances of Color and levels enum
         self._colors = Colors.color
@@ -80,20 +89,12 @@ class Logger:
         self.error = lambda msg: self._log(msg, Levels.ERROR)
         self.critical = lambda msg: self._log(msg, Levels.CRITICAL)
 
-    @staticmethod
-    def get_logger(self):
-        """ Returns reference to static instance of Logger """
-        if _logger is None:
-            _logger = Logger()
-
-        return _logger
-
     def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/'):
         self._pretty = pretty
         self._show_levels = show_levels
         self._show_time = show_time
         self._to_file = to_file
-        self._file+lcoation = file_location
+        self._file_location = file_location
 
     def format(self, fstr):
         """ Customizes the output of the log string """
@@ -111,17 +112,15 @@ class Logger:
         pass
 
     def _log(self, msg, log_lvl):
-        log_line = '{}'*3
-
-        if self._show_levels:
-            log_line = self.levels(log_lvl) + log_line  # show log level in line
+        formatted_log = '{}'*3
+        log = msg
 
         if self._pretty:
-            log_color = self.colors(log_lvl)  # gets color based on log level
-            end_color = self.colors('end')  # add to end of line to stop writing in color
-            log_msg = log_line.format(log_color, msg, end_color)
-        else:
-            print(msg)
+            log_color = self._colors(log_lvl)
+            end_color = self._colors('end')
+            log = formatted_log .format(log_color, msg, end_color)
+
+        print(log)
 
 
     def object(self, obj, params=None, *args):
@@ -129,7 +128,7 @@ class Logger:
 
         if args:
             obj_attrs = vars(obj)
-s
+
             for arg in args:
                 if obj_attrs.get(arg, None):
                     key = arg
