@@ -10,18 +10,19 @@ class Levels(Enum):
     SUCCESS = 2
     WARNING = 3
     CRITICAL = 4
-    STATUS = 5
+    ERROR = 5
+    STATUS = 6
 
 
 class Colors:
 
     _color_map = {
         Levels.INFO: '\033[94m',
+        Levels.STATUS: '\033[1m',
         Levels.SUCCESS: '\033[92m',
         Levels.WARNING: '\033[93m',
-        Levels.CRITICAL: '\033[91m',
-        Levels.STATUS: '\033[1m',
-        # Levels.UNDERLINE: '\033[4m',
+        Levels.ERROR: '\033[91m',
+        Levels.CRITICAL: '\u001b[41;1m',
         'end': '\033[0m',
     }
 
@@ -34,10 +35,11 @@ class LogLevel:
 
     _level_map = {
         Levels.INFO: '[INFO]: ',
+        Levels.STATUS: '[STATUS]: ',
         Levels.SUCCESS: '[SUCCESS]: ',
         Levels.WARNING: '[WARNING]: ',
+        Levels.ERROR: '[ERROR]: ',
         Levels.CRITICAL: '[CRITICAL]: ',
-        Levels.STATUS: '[STATUS]: ',
     }
 
     @staticmethod

@@ -55,47 +55,49 @@ class Logger:
         * Add default logging wrapper
     """
 
-    def __init__(self, pretty=True, show_levels=True, show_time=False, to_file=False, file_location='/var/log/plogs/'):
-        """ Initiliation data for a pretty logger -
-        Used to configure how the logger writes data to the out
+    # stores a static reference to itself
+    _logger = None
 
-        Args:
-            to_file (boolean): writes to logfile -- or to std_out
-            file_location (str): custom logfile location -- or None
-            pretty (boolean): colored -- uncoloreed
-            show_levels (boolean): show levels in output
-            show_time (boolean): displays timestamoin the beginning of logline
-        """
+    def __init__(self):
+        # instances of Color and levels enum
+        self._colors = Colors.color
+        self._levels = LogLevel.level
 
-        self.colors = None if not pretty else Colors.color
-        self.levels =  None if not show_levels else LogLevel.level
-        self.fstr = None
+        # These are the default configs
+        self._pretty = True
+        self._show_levels = False
+        self._show_time = False
+        self._to_file = False
+        self._file_location = '/var/log/plogs/'
+        self._fstr = None
+        self._default_logger = None
 
-        self._pretty = pretty
-        self._show_levels = show_levels
-
-
+        # define log functino for each log level
         self.info = lambda msg: self._log(msg, Levels.INFO)
         self.status = lambda msg: self._log(msg, Levels.STATUS)
         self.success = lambda msg: self._log(msg, Levels.SUCCESS)
         self.warning = lambda msg: self._log(msg, Levels.WARNING)
+        self.error = lambda msg: self._log(msg, Levels.ERROR)
         self.critical = lambda msg: self._log(msg, Levels.CRITICAL)
 
+    @staticmethod
+    def get_logger(self):
+        """ Returns reference to static instance of Logger """
+        if _logger is None:
+            _logger = Logger()
+
+        return _logger
+
+    def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/'):
+        self._pretty = pretty
+        self._show_levels = show_levels
+        self._show_time = show_time
+        self._to_file = to_file
+        self._file+lcoation = file_location
+
     def format(self, fstr):
-        """ Customizes the output of the log string
-
-        Example:
-            >>> from plogs import Logger
-            >>> logging = Logeer()
-            >>>
-            >>> logging.format(f'{show_time}: {show_levels} - {log}')
-            >>> logging.status('hello world')
-            >>> 2018-12-3 08:04:22: [STATUS] - hello world
-
-        Args:
-            fstr (str): python3 formatted string of output
-        """
-        pass
+        """ Customizes the output of the log string """
+        self.fstr = fstr
 
     def bind(self, logger):
         """ The purpose of this binding function is to be able to use
@@ -105,6 +107,7 @@ class Logger:
         Args:
             logger (logging): Instance of built in python logger
         """
+        # self.logger = logger
         pass
 
     def _log(self, msg, log_lvl):
