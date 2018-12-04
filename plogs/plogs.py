@@ -13,12 +13,12 @@ Goals:
     as a package are:
 
     1.) 6 easy to understand logging level colors that will color code all of the logs.
-        - debug:    Color varies, either no color, or colorcoded object
-        - status:   Bold Gray
+        - debug:    Color varies, either no color, or colorcoded objec
         - info:     White
+        - status:   Bold Gray
         - warning:  Orange
-        - error:    {{Not Sure Yet}}
-        - critical: Red
+        - error:    Red
+        - critical: Bold Red
 
     2.) Debugging tools that color code built in python objects: Dictionary and List objects.
     3.) A general set of formatting tools that makes coloring logs intuitive and easy to read.
@@ -30,11 +30,13 @@ from logutils import LogLevel, Colors, Levels
 import pprint
 import sys
 
-
+# global reference to logger (this is because _Logger is a singleton)
 _LOGGER_REF = None
 
 
 def get_logger():
+    """ Returns logger to to user """
+
     global _LOGGER_REF
 
     if _LOGGER_REF is None:
@@ -93,7 +95,7 @@ class _Logger:
         self._pretty = pretty
         self._show_levels = show_levels
         self._show_time = show_time
-        self._to_file = to_file
+        self._to_file = True
         self._file_location = file_location
 
     def format(self, fstr):
@@ -115,12 +117,17 @@ class _Logger:
         formatted_log = '{}'*3
         log = msg
 
+        # format logs if set to be formatted
         if self._pretty:
             log_color = self._colors(log_lvl)
             end_color = self._colors('end')
-            log = formatted_log .format(log_color, msg, end_color)
+            log = formatted_log.format(log_color, msg, end_color)
 
-        print(log)
+        # open and write to file if set to
+        if self._to_file:
+            sys.stdout = open(self._file_location, 'w+')
+
+        print(log + '\n')
 
 
     def object(self, obj, params=None, *args):
