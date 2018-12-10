@@ -4,9 +4,8 @@
 from logutils import LogLevel, Colors, Levels
 
 import pprint
-import sys
 import datetime
-
+import pdb
 
 
 # global reference to logger (this is because _Logger is a singleton)
@@ -31,14 +30,14 @@ class _Logger:
 
         # Name of default log file is plogs_<datetime>
         self._filename = '{}_{}'.format(
-            'plogs',
-            str(datetime.datetime.now().date()),
+            'plogs', str(datetime.datetime.now().date()),
         )
 
         # These are the default configs
-        self._pretty = True
         self._show_levels = False
         self._show_time = False
+        self._pretty = True
+
         self._to_file = False
         self._file_location = '/var/log/plogs/'
         self._fstr = None
@@ -60,33 +59,41 @@ class _Logger:
         self._file_location = file_location
 
     def format(self, fstr):
-        self.fstr = fstr
+        self._fstr = fstr
 
     def bind(self, logger):
         # self.logger = logger
         pass
 
-    def _log(self, msg, log_lvl):
-        formatted_log = '{}'*3
+    def _format(self, msg, log_lvl):
         log = msg
 
-        # format logs if set to be formatted
+        # {{NOTE: any log variables that are added must be get appended in here}}
+        if self._fstr:
+            log = self._fstr
+            if self._show_levels: log = log.replace('{level}', self._levels(log_lvl))
+            if self._show_time: log = log.replace('{time}', str(datetime.datetime.now()))
+            if self._file_location: log = log.replace('{filename}', self._file_location)
+
+            # always need to replace msg
+            log = log.replace('{msg}', msg)
+
+        # colors the logs if self_.pretty == True
         if self._pretty:
-            log_color = self._colors(log_lvl)
-            end_color = self._colors('end')
-            log = formatted_log.format(log_color, msg, end_color)
+            log = self._colors(log_lvl) + log + self._colors('end')
+
+        return log
+
+    def _log(self, msg, log_lvl):
+        log = self._format(msg, log_lvl)
 
         # open and write to file if set to
         if self._to_file:
-            filedes = f'{self._filename}{self.file_location}'
-            sys.stdout = open(filedes, 'w+')
-
-        try:
-            print(log + '\n')
-        except IOError as err:
-            sys,stdout = write
-            print(err)
-
+            file_dest = f'{self._filename}{self.file_location}'
+            with open(file_dest, 'w+') as fd:
+                fd.write(log + '\n')
+        else:
+            print(log)
 
     def object(self, obj, params=None, *args):
         key_val_msg = '{}{}{}: {}{}{}'

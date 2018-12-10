@@ -34,12 +34,12 @@ class Colors:
 class LogLevel:
 
     _level_map = {
-        Levels.INFO: '[INFO]: ',
-        Levels.STATUS: '[STATUS]: ',
-        Levels.SUCCESS: '[SUCCESS]: ',
-        Levels.WARNING: '[WARNING]: ',
-        Levels.ERROR: '[ERROR]: ',
-        Levels.CRITICAL: '[CRITICAL]: ',
+        Levels.INFO: 'INFO',
+        Levels.STATUS: 'STATUS',
+        Levels.SUCCESS: 'SUCCESS',
+        Levels.WARNING: 'WARNING',
+        Levels.ERROR: 'ERROR',
+        Levels.CRITICAL: 'CRITICAL',
     }
 
     @staticmethod
