@@ -29,19 +29,20 @@ class _Logger:
         self._levels = LogLevel.level
 
         # Name of default log file is plogs_<datetime>
-        self._filename = '{}_{}'.format(
-            'plogs', str(datetime.datetime.now().date()),
+        self._filename = 'plogs_{}'.format(
+            str(datetime.datetime.now().date()),
         )
 
-        # These are the default configs
+        # Formatting variables
         self._show_levels = False
         self._show_time = False
         self._pretty = True
 
+        # Config Varables
         self._to_file = False
         self._file_location = '/var/log/plogs/'
         self._fstr = None
-        self._default_logger = None
+        self._logger = None
 
         # define log function for each log level
         self.info = lambda msg: self._log(msg, Levels.INFO)
@@ -62,8 +63,14 @@ class _Logger:
         self._fstr = fstr
 
     def bind(self, logger):
-        # self.logger = logger
-        pass
+        self.logger = logger
+
+        self.info = self.logger.info
+        self.status = self.logger.status
+        self.succeses = self.logger.success
+        self.warning = self.logger.warning
+        self.error = self.logger.error
+        self.critical = self.logger.critical
 
     def _format(self, msg, log_lvl):
         log = msg
