@@ -76,7 +76,7 @@ logging = get_logger()
 logging.config(show_levels=True, show_time=True)
 
 # can now format logs with `{level}` to show the logging level, and `{time}` to show the datetime the log was written
-logging.format([{level}] - {time} - {msg})
+logging.format('[{level}] - {time} - {msg}')
 
 # finally write log
 logging.status('Show me the logs')
