@@ -100,7 +100,8 @@ logging = get_logger()
 # configure plogs to allow logging level and date/time
 logging.config(show_levels=True, show_time=True)
 
-# once configged logs with `{level}` to show the logging level, and `{time}` to show the datetime the log was written
+# config logs with the `{level}` keyword to show the logging level,
+# and `{time}` to show the date & time of when the log was written
 logging.format('[{level}] - {time} - {msg}')
 
 # finally write logs
@@ -111,6 +112,8 @@ logging.info('We got some info')
 # [STATUS] - 2018-12-11 11:56:05 - Show me the logs
 # [INFO] - 2018-12-11 11:56:09 - We got some info
 ```
+
+<b>NOTE</b>, in order to format Pretty Logs you must put the variable you want written inside `{}` - ie like so: `{filename}`, `{file_location}`, `{levels}`, etc.
 
 
 ### Log Tables
