@@ -1,5 +1,6 @@
 # plogs — Pretty Logs
 
+
 ### Project Goals
 In the beginning, the goal of Pretty Logs was to create a colorful logging system designed for scalable projects. Later,
 my vision for Pretty Logs widened in scope to also include useful debugging tools that are found in JavaScript and
@@ -23,6 +24,7 @@ recommend cloning the GitHub repository to ensure the plogs module hierarchy is 
 $ git clone https://github.com/11/plogs.git
 ```
 
+
 ### Setup
 
 Importing Pretty Logs into your project is quite simple. All that's required is to <b>import plogs</b> and instantiate an instance of <b>Logger</b>.
@@ -33,6 +35,7 @@ logging = get_logger()
 ```
 
 It's recommend to do the following steps inside a `__init__.py` file at the root level of your project so Pretty Logs can be referenced throughout the entire application.
+
 
 ### Log With Colors
 
@@ -45,7 +48,7 @@ Pretty Logs' main feature is color coding different logging levels and statuses.
 | logging.success	| green |
 | logging.warning	| orange |
 | logging.error     | red |
-| logging.critical	| red highlight |
+| logging.critical	| red highlights |
 
 
 ### Format Your Logs
@@ -55,27 +58,27 @@ Pretty Logs allows for custom logs by adding your own formatting. This can be do
 The following are all the configurable variables:
 
 
-| Variable      | Type   | Description |
-| ---           | ---    | ---         |
-| pretty        | `bool` | `True` colors logs, `False` uncolors logs|
-| show_levels   | `bool` | `True` shows logging level in formatted log, `False` show no logging level |
-| show_time     | `bool` | `True` shows time in formatted log, `False` doesn't show time |
-| to_file       | `bool` | `True` writes to `file_location`, `False` writes to `std.out` |
-| file_location | `str`  | Default is `/var/log/plogs`, otherwise a file location of your choice |
-| filename      | `str`  | Default is `plog_01.log`, otherwise a filename of your choice |
+| Variable        | Type   | Description |
+| ---             | ---    | ---         |
+| `pretty`        | `bool` | Setting to `True` will add color to logs, `False` will un-color logs |
+| `show_levels`   | `bool` | Setting to `True` will show logging level in formatted log, `False` show no logging level |
+| `show_time`     | `bool` | Setting to `True` will show time in formatted log, `False` doesn't show time |
+| `to_file`       | `bool` | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
+| `file_location` | `str`  | Default `file_location` is `/var/log/plogs/`, otherwise a file location of your choice |
+| `filename`      | `str`  | Default log file is `plog_01.log`, otherwise a filename of your choice |
 
 
-An example of a formatted log would be like so:
+An example of a formatted logs would be like such:
 
 ```python3
 from plogs import get_logger
 
 logging = get_logger()
 
-# configure plogs to allow `levels` and `datetime` in log
+# configure plogs to allow logging level and date/time
 logging.config(show_levels=True, show_time=True)
 
-# can now format logs with `{level}` to show the logging level, and `{time}` to show the datetime the log was written
+# once configged logs with `{level}` to show the logging level, and `{time}` to show the datetime the log was written
 logging.format('[{level}] - {time} - {msg}')
 
 # finally write logs
