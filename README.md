@@ -75,7 +75,7 @@ logging.config(to_file=True, file_location='your/filepath/here/', filename='new_
 
 ### Format Your Logs
 
-Pretty Logs allows for a lot of customization. This can be done by editing the logging <b>config</b> and supplying Pretty Logs with a formatted string.
+Pretty Logs allows for a lot of customization. Customizing logs is done by editing the logging <b>config</b> and supplying Pretty Logs with a formatted string.
 
 The following are all the configurable variables:
 
