@@ -103,7 +103,7 @@ class _Logger:
         # open and write to file if set to
         if self._to_file:
             file_dest = f'{self._file_location}{self._filename}'
-            with open(file_dest, 'w+') as fd:
+            with open(file_dest, 'a+') as fd:
                 fd.write(log + '\n')
         else:
             print(log)

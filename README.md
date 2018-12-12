@@ -72,7 +72,9 @@ If you are looking to use another filename and location, it can simply be edited
 logging.config(to_file=True, file_location='your/filepath/here/', filename='new_file.log')
 ```
 
-<b>Note</b>: It's recommended to view colored logs with the `less` terminal command. Pretty Logs was not designed to show colored files in Vim, Atom, Sublime, and other popular text editors.
+<b>Note</b>: It's recommended to view colored logs with the `less` terminal command - if `less` doesn't work be default, `less -r` is worth trying. Also, Pretty Logs
+was not designed to show colored files in Vim, Atom, Sublime, and other popular text editors.
+
 
 
 ### Formating Logs
