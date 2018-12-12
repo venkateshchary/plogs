@@ -55,14 +55,15 @@ Pretty Logs allows for custom logs by adding your own formatting. This can be do
 The following are the configurable variables:
 
 
-| Variable | Description|
-| ---               | --- |
-| show_levels | gray |
-| logging.status	| bold |
-| logging.success	| green |
-| logging.warning	| orange |
-| logging.error     | red |
-| logging.critical	| red highlight |
+| Variable      | Type   | Description |
+| ---           | ---    | ---         |
+| pretty        | `bool` | `True` colors logs, `False` uncolors logs|
+| show_levels   | `bool` | `True` shows logging level in formatted log, `False` show no logging level |
+| show_time     | `bool` | `True` shows time in formatted log, `False` doesn't show time |
+| to_file       | `bool` | `True` writes to `file_location`, `False` writes to `std.out` |
+| file_location | `str`  | Default is `/var/log/plogs`, otherwise a file location of your choice |
+| filename      | `str`  | Default is `plog_01.log`, otherwise a filename of your choice |
+
 
 ```python3
 from plogs import get_logger
