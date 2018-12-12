@@ -91,7 +91,8 @@ The following are all the configurable variables:
 | `show_time`     | `bool` | `{time}`          | Setting to `True` will show time in formatted log, `False` doesn't show time |
 | `to_file`       | `bool` | `N/A`             | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
 | `file_location` | `str`  | `{file_location}` | Default `file_location` is `/var/log/plogs/`, otherwise a file location of your choice |
-| `filename`      | `str`  | `{filenamee}`     | Default log file is `plog_01.log`, otherwise a filename of your choice |
+| `filename`      | `str`  | `{filename}`      | Default log file is `plog_01.log`, otherwise a filename of your choice |
+| `N\A`           | `N/A`  | `{msg}`           | Shows the log message in the formatted log |
 
 
 An example of a formatted logs would be like such:
