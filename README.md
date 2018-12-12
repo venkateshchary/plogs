@@ -78,11 +78,13 @@ logging.config(show_levels=True, show_time=True)
 # can now format logs with `{level}` to show the logging level, and `{time}` to show the datetime the log was written
 logging.format('[{level}] - {time} - {msg}')
 
-# finally write log
+# finally write logs
 logging.status('Show me the logs')
+logging.info('We got some info')
 
 # Output:
 # [STATUS] - 2018-12-11 11:56:05 - Show me the logs
+# [INFO] - 2018-12-11 11:56:09 - We got some info
 ```
 
 
