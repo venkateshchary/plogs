@@ -2,8 +2,10 @@
 
 # File: logutils.py
 # Author: Doug Rudolph
-# Created: October 19, 2018
+# Created: November 19, 2018
 from enum import Enum
+
+import os
 
 class Levels(Enum):
     INFO = 1
@@ -46,3 +48,56 @@ class LogLevel:
     def level(log_lvl):
         return LogLevel._level_map[log_lvl]
 
+
+def check_config(pretty, show_levels, show_time, to_file, file_location, filename):
+
+    # if trying to write to file, the following cases must hold true
+    if to_file:
+       # file_location and filename must be strings
+        try:
+            assert isinstance(file_location, str)
+            assert isinstance(filename, str)
+            assert len(file_location) > 0
+            assert len(filename) > 0
+        except AssertionError as err:
+            print('`filename` or `file_location` must be a non-empty string')
+            raise
+
+        # file_location must exist
+        if not os.path.exists(file_location):
+            # try permission denied, set it to just /var/log
+            try:
+                os.mkdir(file_location)
+            except Exception as err:
+                print('Permission Denied: cannot write to `file_location: ', file_location)
+                print('Attempting to write logs to `/var/log/`')
+                file_location = '/var/log/'
+
+            # if '/var/log/' doesn't exist, try to create file_location
+            if not os.path.exists(file_location):
+                try:
+                    os.mkdir(file_location)
+                except Exception as err:
+                    print('`file_location`: /var/log` cannot be written to')
+                    raise
+        else:
+            try:
+                assert os.path.exists(file_location)
+            except AssertionError as err:
+                print('`file_location`:', file_location,' - is broken')
+
+    # config variables must be type `bool`
+    try:
+        assert isinstance(pretty, bool)
+        assert isinstance(show_levels, bool)
+        assert isinstance(show_time, bool)
+        assert isinstance(to_file, bool)
+    except AssertionError as err:
+        print(
+            'One of the following config variables is not of type `bool`:\n ',
+            'pretty: ', pretty,
+            'show_levels: ', show_levels,
+            'show_time: ', show_time,
+            'to_file: ', to_file,
+        )
+        raise

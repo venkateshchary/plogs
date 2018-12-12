@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from logutils import LogLevel, Colors, Levels
+from logutils import LogLevel, Colors, Levels, check_config
 
 import pprint
 import datetime
-import pdb
 
 
 # global reference to logger (this is because _Logger is a singleton)
@@ -28,11 +27,6 @@ class _Logger:
         self._colors = Colors.color
         self._levels = LogLevel.level
 
-        # Name of default log file is plogs_<datetime>
-        self._filename = 'plogs_{}'.format(
-            str(datetime.datetime.now().date()),
-        )
-
         # Formatting variables
         self._show_levels = False
         self._show_time = False
@@ -41,6 +35,7 @@ class _Logger:
         # Config Varables
         self._to_file = False
         self._file_location = '/var/log/plogs/'
+        self._filename = 'plogs_01.log'
         self._fstr = None
         self._logger = None
 
@@ -52,12 +47,17 @@ class _Logger:
         self.error = lambda msg: self._log(msg, Levels.ERROR)
         self.critical = lambda msg: self._log(msg, Levels.CRITICAL)
 
-    def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/'):
+    def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/', filename='plogs_01.log'):
+        # check all possible issue with config variables
+        check_config(pretty, show_levels, show_time, to_file, file_location, filename)
+
+        # store config variables
         self._pretty = pretty
         self._show_levels = show_levels
         self._show_time = show_time
         self._to_file = to_file
         self._file_location = file_location
+        self._filename = filename
 
     def format(self, fstr):
         self._fstr = fstr
@@ -78,9 +78,13 @@ class _Logger:
         # {{NOTE: any log variables that are added must be get appended in here}}
         if self._fstr:
             log = self._fstr
-            if self._show_levels: log = log.replace('{level}', self._levels(log_lvl))
-            if self._show_time: log = log.replace('{time}', str(datetime.datetime.now()))
-            if self._file_location: log = log.replace('{filename}', self._file_location)
+
+            if self._show_levels:
+                log = log.replace('{level}', self._levels(log_lvl))
+            if self._show_time:
+                log = log.replace('{time}', str(datetime.datetime.now()))
+            if self._to_file:
+                log = log.replace('{filename}', self._filename)
 
             # always need to replace msg
             log = log.replace('{msg}', msg)
@@ -96,7 +100,7 @@ class _Logger:
 
         # open and write to file if set to
         if self._to_file:
-            file_dest = f'{self._filename}{self.file_location}'
+            file_dest = f'{self._file_location}{self._filename}'
             with open(file_dest, 'w+') as fd:
                 fd.write(log + '\n')
         else:
