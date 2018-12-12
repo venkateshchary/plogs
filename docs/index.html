@@ -90,10 +90,11 @@
                     Importing Pretty Logs into your project is quite simple. All that's required is to <b>import plogs</b> and
                     instantiate an instance of <b>Logger</b>.
                 </p>
-                <pre><code>from plogs import Logger <br/>logging = Logger()</code></pre>
+                <pre><code>from plogs import get_logger<br/>logging = get_logger()</code></pre>
                 <p>
                     It's recommend to do the following steps inside a <b>`__init__.py`</b> file at the root level of your project
                     so Pretty Logs can be referenced throughout the entire application.
+                </p>
             </div>
 
             <div id="examples" class="desc">
@@ -120,11 +121,110 @@
                         <td>orange</td>
                     </tr>
                     <tr>
-                        <td><code>logging.critical</code></td>
+                        <td><code>logging.error</code></td>
                         <td>red</td>
+                    </tr>
+                    <tr>
+                        <td><code>logging.critical</code></td>
+                        <td>red highlight</td>
                     </tr>
                 </table>
             </div>
+
+            <div class="desc">
+                <h3> Log to a File </h3>
+                <p>
+                    Pretty Logs can write colored logs to files. This is done through Pretty Logs' <b>config</b> function.
+                </p>
+                <pre><code>
+from plogs import get_logger
+
+logging = get_logger()
+logging.config(to_file=True)
+
+logging.info('this is will be written to a file')
+                </code></pre>
+                <p>
+                    By default, files are written to <b>/var/log/plogs/plog_01.log</b>. Thee reason that <b>/var/log/</b> is chosen as the default
+                    directory is because of how commonly it's used on unix based machines and in docker images services.
+                    <br/> <br/>
+                    If you are looking to use another filename and location, it can simply be edited like such:
+                </p>
+                <pre><code>
+logging.config(to_file=True, file_location='your/filepath/here/', filename='new_file.log')
+                </code></pre>
+                <p>
+                <b>Note</b>: It's recommended to view colored logs with the <b>less</b> terminal command - if <b>less</b> doesn't work
+                    be default, <b>less -r</b> is worth trying. Also, Pretty Logs was not designed to show colored files
+                    in Vim, Atom, Sublime, and other popular text editors.
+                </p>
+            </div>
+
+            <div id="" class="desc">
+                <h3>Formatting Logs </h3>
+
+                <p>
+                    Pretty Logs allows for a lot of customization. Customizing logs is done by editing the logging config and supplying Pretty Logs with a formatted string.
+                    <br/></br>
+                    The following are all the configurable variables:
+                </p>
+                <table>
+                    <tr>
+                        <td><code>pretty</code></td>
+                        <td><code>bool</code></td>
+                        <td><code>N/A</code></td>
+                        <td>Setting to <code>True</code> will add color to logs, <code>False</code> will un-color logs</td>
+                    </tr>
+                    <tr>
+                        <td><code>show_levels</code></td>
+                        <td><code>bool</code></td>
+                        <td><code>{level}</code></td>
+                        <td>Setting to <code>True</code> will show logging level in formatted log, <code>False</code> show no logging level</td>
+                    </tr>
+                    <tr>
+                        <td><code>show_time</code></td>
+                        <td><code>bool</code></td>
+                        <td><code>{time}</code></td>
+                        <td>Setting to <code>True</code> will show time in formatted log, <code>False</code> doesn't show time</td>
+                    </tr>
+                    <tr>
+                        <td><code>to_file</code></td>
+                        <td><code>bool</code></td>
+                        <td><code>N/A</code></td>
+                        <td>Setting to <code>True</code> writes logs to file_location, <code>False</code> writes to <code>standard output</code></td>
+                    </tr>
+                </table>
+                <br/>
+                <p>An example of a formatted logs would be like such:</p>
+<pre><code>
+from plogs import get_logger
+
+logging = get_logger()
+
+# configure plogs to allow logging level and date/time
+logging.config(show_levels=True, show_time=True)
+
+# config logs with the `{level}` keyword to show the logging level,
+# `{time}` to show the date & time of when the log was written
+# and `{msg} to show the logging message
+logging.format('[{level}] - {time} - {msg}')
+
+# finally write logs
+logging.status('Show me the logs')
+logging.info('We got some info')
+
+# Output:
+# [STATUS] - 2018-12-11 11:56:05 - Show me the logs
+# [INFO] - 2018-12-11 11:56:09 - We got some info
+</code></pre>
+
+                <p>
+                    <b>NOTE</b>: In order to format Pretty Logs you must put the variable you want written inside a pair of <b>{}</b>
+                    - ie like so: <b>{filename}</b>, <b>{file_location}</b>, <b>{levels}</b>, etc. These values will be substituted for the variable they represent
+                </p>
+            </div>
+
+
 
             <div id="" class="desc">
                 <h3>Log Tables</h3>
