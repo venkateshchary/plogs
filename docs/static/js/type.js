@@ -81,7 +81,7 @@ class TypeWriter{
         }
         else{
             // destroy cursor
-            cursor.innerHTML=null;
+            cursor.innerHTML='';
 
             // pause and go to next sequence
             writer.seqCount++;
