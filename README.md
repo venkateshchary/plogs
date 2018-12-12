@@ -87,7 +87,7 @@ The following are all the configurable variables:
 | Variable        | Type   | Format Keyword    | Description |
 | ---             | ---    | ---               | ---         |
 | `pretty`        | `bool` | `N/A`             | Setting to `True` will add color to logs, `False` will un-color logs |
-| `show_levels`   | `bool` | `{levels}`        | Setting to `True` will show logging level in formatted log, `False` show no logging level |
+| `show_levels`   | `bool` | `{level}`        | Setting to `True` will show logging level in formatted log, `False` show no logging level |
 | `show_time`     | `bool` | `{time}`          | Setting to `True` will show time in formatted log, `False` doesn't show time |
 | `to_file`       | `bool` | `N/A`             | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
 | `file_location` | `str`  | `{file_location}` | Default `file_location` is `/var/log/plogs/`, otherwise a file location of your choice |
