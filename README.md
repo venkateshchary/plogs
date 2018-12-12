@@ -64,13 +64,15 @@ logging.info('this is will be written to a file')
 ```
 
 By default, files are written to `/var/log/plogs/plog_01.log`. `/var/log/` is chosen as the default directory because it is commonly used on unix based machines and in
-docker based services.
+docker images services.
 
 If you are looking to use another filename and location, it can simply be edited like such:
 
 ```python3
 logging.config(to_file=True, file_location='your/filepath/here/', filename='new_file.log')
 ```
+
+<b>Note</b>: It's recommended to view colored logs with the `less` terminal command. Pretty Logs was not designed to show colored files in Vim, Atom, Sublime, and other popular text editors.
 
 
 ### Formating Logs
@@ -114,7 +116,7 @@ logging.info('We got some info')
 # [INFO] - 2018-12-11 11:56:09 - We got some info
 ```
 
-<b>NOTE</b>, in order to format Pretty Logs you must put the variable you want written inside `{}` - ie like so: `{filename}`, `{file_location}`, `{levels}`, etc.
+<b>NOTE</b>: In order to format Pretty Logs you must put the variable you want written inside `{}` - ie like so: `{filename}`, `{file_location}`, `{levels}`, etc.
 These values will be substituted for the variable they represent
 
 
