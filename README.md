@@ -36,7 +36,7 @@ It's recommend to do the following steps inside a `__init__.py` file at the root
 
 ### Log With Colors
 
-Pretty Logs' main feature is color coding different logging levels and statues. The default logging levels are set mapped to:
+Pretty Logs' main feature is color coding different logging levels and statuses. The default logging levels are set mapped to:
 
 | Log Level         | Color |
 | ---               | --- |
@@ -50,7 +50,7 @@ Pretty Logs' main feature is color coding different logging levels and statues. 
 
 ### Format Your Logs
 
-Pretty Logs allows for custom logs by adding your own formatting. This can be done by editing the logging <b>config</b> and <b>formatting</b>
+Pretty Logs allows for custom logs by adding your own formatting. This can be done by editing the logging <b>config</b> and giving `plogs` a formatted string.
 
 The following are the configurable variables:
 
@@ -65,13 +65,20 @@ The following are the configurable variables:
 | filename      | `str`  | Default is `plog_01.log`, otherwise a filename of your choice |
 
 
+An example of a formatted log would be like so:
+
 ```python3
 from plogs import get_logger
 
 logging = get_logger()
+
+# configure plogs to allow `levels` and `datetime` in log
 logging.config(show_levels=True, show_time=True)
+
+# can now format logs with `{level}` to show the logging level, and `{time}` to show the datetime the log was written
 logging.format([{level}] - {time} - {msg})
 
+# finally write log
 logging.status('Show me the logs')
 
 # Output:
