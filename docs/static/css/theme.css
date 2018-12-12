@@ -144,7 +144,7 @@ section{
 
 table{
     border-collapse: collapse;
-    width: 100%;
+    width: 120%;
 }
 
 
@@ -153,6 +153,7 @@ th, td{
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
+    padding-right: 20px;
     color: #fff;
     border: 1px solid white;
     border-color: #444444;
@@ -163,7 +164,7 @@ th, td{
 }
 
 .comment{
-    color: #CCA7D1;
+    color: #FCFCFC;
     font-style: italic;
+    font-weight: 100;
 }
-
