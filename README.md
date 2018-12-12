@@ -80,14 +80,14 @@ Pretty Logs allows for a lot of customization. Customizing logs is done by editi
 The following are all the configurable variables:
 
 
-| Variable        | Type   | Description |
-| ---             | ---    | ---         |
-| `pretty`        | `bool` | Setting to `True` will add color to logs, `False` will un-color logs |
-| `show_levels`   | `bool` | Setting to `True` will show logging level in formatted log, `False` show no logging level |
-| `show_time`     | `bool` | Setting to `True` will show time in formatted log, `False` doesn't show time |
-| `to_file`       | `bool` | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
-| `file_location` | `str`  | Default `file_location` is `/var/log/plogs/`, otherwise a file location of your choice |
-| `filename`      | `str`  | Default log file is `plog_01.log`, otherwise a filename of your choice |
+| Variable        | Type   | format keyword    | Description |
+| ---             | ---    | ---               | ---         |
+| `pretty`        | `bool` | `N/A`             | Setting to `True` will add color to logs, `False` will un-color logs |
+| `show_levels`   | `bool` | `{levels}`        | Setting to `True` will show logging level in formatted log, `False` show no logging level |
+| `show_time`     | `bool` | `{time}`          | Setting to `True` will show time in formatted log, `False` doesn't show time |
+| `to_file`       | `bool` | `N/A`             | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
+| `file_location` | `str`  | `{file_location}` | Default `file_location` is `/var/log/plogs/`, otherwise a file location of your choice |
+| `filename`      | `str`  | `{filenamee}`     | Default log file is `plog_01.log`, otherwise a filename of your choice |
 
 
 An example of a formatted logs would be like such:
