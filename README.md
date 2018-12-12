@@ -11,7 +11,7 @@ can only print to.
 
 
 ### Installation
-The easiest way to install Pretty Logs is to install via pip.
+The easiest way to install Pretty Logs is to install via pip. [pypi link](https://pypi.org/project/plogs/)
 
 ```
 $ pip3 install -U plogs
