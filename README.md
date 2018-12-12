@@ -52,7 +52,7 @@ Pretty Logs' main feature is color coding different logging levels and statuses.
 
 Pretty Logs allows for custom logs by adding your own formatting. This can be done by editing the logging <b>config</b> and giving `plogs` a formatted string.
 
-The following are the configurable variables:
+The following are all the configurable variables:
 
 
 | Variable      | Type   | Description |
