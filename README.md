@@ -51,9 +51,29 @@ Pretty Logs' main feature is color coding different logging levels and statuses.
 | logging.critical	| red highlights |
 
 
+### Log to Files
+Pretty Logs can write colored logs to files. This is done through Pretty Logs' <b>config</b> function.
+
+```python3
+from plogs import get_logger
+
+logging = get_logger()
+logging.config(to_file=True)
+
+logging.info('this is will be written to a file')
+```
+
+By default, files are written to `/var/log/plogs/plog_01.log`. `/var/log/` is a directory often found on unix based machines and is chosen as the default file location
+because of how common that directory is added to docker based services. If you are looking to use another filename and location, it can simply be edited like such:
+
+```python3
+logging.config(to_file=True, file_location='your/filepath/here/', filename='new_file.log')
+```
+
+
 ### Format Your Logs
 
-Pretty Logs allows for custom logs by adding your own formatting. This can be done by editing the logging <b>config</b> and giving `plogs` a formatted string.
+Pretty Logs allows for custom logs. This can be done by editing the logging <b>config</b> and giving `plogs` annd then supplying a formatted string.
 
 The following are all the configurable variables:
 
