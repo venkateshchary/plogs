@@ -73,7 +73,7 @@
             </div>
 
             <div id="install" class="desc">
-                <h3>Installation</h3>
+                <h3>Install</h3>
                 <p> The easiest way to install Pretty Logs is to install via pip. </p>
                 <pre><code><span class="no-select">$ </span>pip3 install -U plogs</code></pre>
 
@@ -219,26 +219,26 @@ from plogs import get_logger
 
 logging = get_logger()
 
-# configure plogs to allow logging level and date/time
+<span class="comment"># configure plogs to allow logging level and date/time</span>
 logging.config(show_levels=True, show_time=True)
 
-# config logs with the `{level}` keyword to show the logging level,
-# `{time}` to show the date & time of when the log was written
-# and `{msg} to show the logging message
+<span class="comment"># config logs with the `{level}` keyword to show the logging level,</span>
+<span class="comment"># `{time}` to show the date & time of when the log was written</span>
+<span class="comment"># and `{msg} to show the logging message</span>
 logging.format('[{level}] - {time} - {msg}')
 
-# finally write logs
+<span class="comment"># finally write logs</span>
 logging.status('Show me the logs')
 logging.info('We got some info')
 
-# Output:
-# [STATUS] - 2018-12-11 11:56:05 - Show me the logs
-# [INFO] - 2018-12-11 11:56:09 - We got some info
+<span class="comment"># Output:</span>
+<span class="comment"># [STATUS] - 2018-12-11 11:56:05 - Show me the logs</span>
+<span class="comment"># [INFO] - 2018-12-11 11:56:09 - We got some info</span>
 </code></pre>
 
                 <p>
-                    <b>NOTE</b>: In order to format Pretty Logs you must put the variable you want written inside a pair of <b>{}</b>
-                    - ie like so: <b>{filename}</b>, <b>{file_location}</b>, <b>{levels}</b>, etc. These values will be substituted for the variable they represent
+                    <b>NOTE</b>: In order to format Pretty Logs you must put the variable you want written inside a pair of <b>`{}`</b>
+                    - ie like so: <b>`{filename}`</b>, <b>`{file_location}`</b>, <b>`{levels}`</b>, etc. These values will be substituted for the variable they represent
                 </p>
             </div>
 

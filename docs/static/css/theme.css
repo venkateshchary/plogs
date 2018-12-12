@@ -162,3 +162,8 @@ th, td{
     user-select: none;
 }
 
+.comment{
+    color: #CCA7D1;
+    font-style: italic;
+}
+
