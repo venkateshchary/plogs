@@ -51,7 +51,7 @@ Pretty Logs' main feature is color coding different logging levels and statuses.
 | logging.critical	| red highlights |
 
 
-### Log to Files
+### Log to a File
 Pretty Logs can write colored logs to files. This is done through Pretty Logs' <b>config</b> function.
 
 ```python3
@@ -73,14 +73,14 @@ logging.config(to_file=True, file_location='your/filepath/here/', filename='new_
 ```
 
 
-### Format Your Logs
+### Formating Logs
 
 Pretty Logs allows for a lot of customization. Customizing logs is done by editing the logging <b>config</b> and supplying Pretty Logs with a formatted string.
 
 The following are all the configurable variables:
 
 
-| Variable        | Type   | format keyword    | Description |
+| Variable        | Type   | Format Keyword    | Description |
 | ---             | ---    | ---               | ---         |
 | `pretty`        | `bool` | `N/A`             | Setting to `True` will add color to logs, `False` will un-color logs |
 | `show_levels`   | `bool` | `{levels}`        | Setting to `True` will show logging level in formatted log, `False` show no logging level |
