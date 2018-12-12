@@ -49,7 +49,9 @@ class _Logger:
 
     def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/', filename='plogs_01.log'):
         # check all possible issue with config variables
-        check_config(pretty, show_levels, show_time, to_file, file_location, filename)
+
+        pretty, show_levels, show_time, to_file, file_location, filename = \
+            check_config(pretty, show_levels, show_time, to_file, file_location, filename)
 
         # store config variables
         self._pretty = pretty

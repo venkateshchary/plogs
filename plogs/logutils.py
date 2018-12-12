@@ -6,6 +6,7 @@
 from enum import Enum
 
 import os
+import sys
 
 class Levels(Enum):
     INFO = 1
@@ -65,21 +66,12 @@ def check_config(pretty, show_levels, show_time, to_file, file_location, filenam
 
         # file_location must exist
         if not os.path.exists(file_location):
-            # try permission denied, set it to just /var/log
             try:
                 os.mkdir(file_location)
             except Exception as err:
                 print('Permission Denied: cannot write to `file_location: ', file_location)
-                print('Attempting to write logs to `/var/log/`')
-                file_location = '/var/log/'
-
-            # if '/var/log/' doesn't exist, try to create file_location
-            if not os.path.exists(file_location):
-                try:
-                    os.mkdir(file_location)
-                except Exception as err:
-                    print('`file_location`: /var/log` cannot be written to')
-                    raise
+                print('Must run program as root user')
+                sys.exit(0)
         else:
             try:
                 assert os.path.exists(file_location)
@@ -101,3 +93,6 @@ def check_config(pretty, show_levels, show_time, to_file, file_location, filenam
             'to_file: ', to_file,
         )
         raise
+
+    # return updated vars
+    return pretty, show_levels, show_time, to_file, file_location, filename
