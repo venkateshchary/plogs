@@ -37,7 +37,7 @@ logging = get_logger()
 It's recommend to do the following steps inside a `__init__.py` file at the root level of your project so Pretty Logs can be referenced throughout the entire application.
 
 
-### Log With Colors
+### Log with Colors
 
 Pretty Logs' main feature is color coding different logging levels and statuses. The default logging levels are set mapped to:
 
