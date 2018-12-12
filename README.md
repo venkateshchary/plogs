@@ -63,8 +63,10 @@ logging.config(to_file=True)
 logging.info('this is will be written to a file')
 ```
 
-By default, files are written to `/var/log/plogs/plog_01.log`. `/var/log/` is a directory often found on unix based machines and is chosen as the default file location
-because of how common that directory is added to docker based services. If you are looking to use another filename and location, it can simply be edited like such:
+By default, files are written to `/var/log/plogs/plog_01.log`. `/var/log/` is chosen as the default directory because it is commonly used on unix based machines and in
+docker based services.
+
+If you are looking to use another filename and location, it can simply be edited like such:
 
 ```python3
 logging.config(to_file=True, file_location='your/filepath/here/', filename='new_file.log')
