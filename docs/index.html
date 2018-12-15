@@ -17,6 +17,7 @@
                     <li><a href="https://github.com/11/plogs/blob/master/docs/docs.md" target="_tab">Documentation</a></li>
                     <li><a href="#setup" >Setup</a></li>
                     <li><a href="#examples">Examples</a></li>
+                    <li><a href="#" style="float:right"> plogs </a></li>
                 </ul>
             </nav>
 
@@ -53,6 +54,9 @@
             <div class="btn-container">
                 <a class="btn" href="https://pypi.org/project/plogs/" target="_tab">
                     <span class="btn-text">Download plogs for python3 </span>
+                </a>
+                <a href="#install">
+                    <img class="arrow" src="./static/imgs/arrow.svg" width="18">
                 </a>
             </div>
 
@@ -151,7 +155,11 @@ logging.info('this is will be written to a file')
                     If you are looking to use another filename and location, it can simply be edited like such:
                 </p>
                 <pre><code>
-logging.config(to_file=True, file_location='your/filepath/here/', filename='new_file.log')
+logging.config(
+    to_file=True,
+    file_location='your/filepath/here/',
+    filename='new_file.log'
+)
                 </code></pre>
                 <p>
                 <b>Note</b>: It's recommended to view colored logs with the <b>less</b> terminal command - if <b>less</b> doesn't work

@@ -17,7 +17,6 @@ nav ul li{
     padding: 10px;
 }
 
-
 a{
     color: #999999;
     text-decoration: none;
@@ -31,8 +30,6 @@ a{
 a:hover{
     color: white;
 }
-
-
 
 .slogan{
     color: #fff;
@@ -168,3 +165,17 @@ th, td{
     font-style: italic;
     font-weight: 100;
 }
+
+@keyframes bounce{
+    0%, 100% { transform: translateY(0px); }
+    50% {  transform: translateY(-7px); }
+}
+
+.arrow{
+    display: block;
+    padding-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: bounce 2s linear infinite;
+}
+
