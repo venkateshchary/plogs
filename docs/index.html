@@ -1,3 +1,13 @@
+<!-- Author: Doug Rudolph       -->
+<!-- File: index.html           -->
+<!-- Date: December 15th 2018   -->
+
+<!-- ***** CREDITS *****        -->
+<!-- Terminal CSS: [link here]  -->
+<!-- Website Theme: Inspired by Hyper terminal [link here] -->
+
+
+
 <html>
     <head>
         <title> Pretty Logs Python </title>
@@ -38,30 +48,20 @@
                 </div>
             </div>
 
-            <!--
-            <div class="like-n-follow">
-                <div class="love-btn">
-                    <a href="#">star</a>
-                </div>
-
-                <div class="love-btn">
-                    <a href="#">Follow @_dougrudolph</a>
-                </div>
-            </div>
-            -->
-
+            <!-- download button & bouncing arrow -->
             <div class="btn-container">
                 <a class="btn" href="https://pypi.org/project/plogs/" target="_tab">
                     <span class="btn-text">Download plogs for python3 </span>
                 </a>
-                <a href="#install">
+                <a href="#goals">
                     <img class="arrow" src="./static/imgs/arrow.svg" width="18">
                 </a>
             </div>
-
         </section>
 
         <section class="docs">
+
+            <!-- project goals section -->
             <div id="goals" class="desc">
                 <h3>Project Goals</h3>
                 <p>
@@ -70,11 +70,12 @@
                     JavaScript and aren't that readily available in Python.
                     <br/>
                     <br/>
-                    In the future, we anticipate better control to configure logging settings and a debugging log level where debug
+                    In the future, I anticipate better control to configure logging settings and a debugging log level where debug
                     tools can only print to.
                 </p>
             </div>
 
+            <!-- install instructions -->
             <div id="install" class="desc">
                 <h3>Install</h3>
                 <p> The easiest way to install Pretty Logs is to install via pip. </p>
@@ -95,7 +96,7 @@
                 </p>
                 <pre><code>from plogs import get_logger<br/>logging = get_logger()</code></pre>
                 <p>
-                    It's recommend to do the following steps inside a <b>`__init__.py`</b> file at the root level of your project
+                    It's recommend to do the following steps inside an <b>`__init__.py`</b> file at the root level of your project
                     so Pretty Logs can be referenced throughout the entire application.
                 </p>
             </div>
@@ -175,7 +176,7 @@ logging.config(
                     <br/></br>
                     The following are all the configurable variables:
                 </p>
-                <table>
+                <table style="width: 110%;">
                     <tr>
                         <td><code>pretty</code></td>
                         <td><code>bool</code></td>
