@@ -1,5 +1,8 @@
 # plogs — Pretty Logs
 
+![](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
+![](https://img.shields.io/pypi/l/:plogs.svg)
+![](https://img.shields.io/pypi/pyversions/:packageName.svg)
 
 ### Project Goals
 In the beginning, the goal of Pretty Logs was to create a colorful logging system designed for scalable projects. Later,
