@@ -24,10 +24,10 @@ setuptools.setup(
     url="https://github.com/11/plogs",
 
     # takes note that the python modules are contained in the source folder
-    package_dir={'': 'src:'},
+    package_dir={"": "src:"},
 
     # setuptools will find the python packages for us
-    packages=setuptools.find_packages(),
+    packages=["src"],
 
     # specify what version of python plogs is targeting
     classifiers=[
