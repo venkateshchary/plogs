@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from logutils import LogLevel, Colors, Levels, check_config
+from .logutils import LogLevel, Colors, Levels, check_config
 
 import pprint
 import datetime
@@ -11,7 +11,7 @@ import datetime
 _LOGGER_REF = None
 
 
-def get_logger():
+def _get_logger():
     global _LOGGER_REF
 
     if _LOGGER_REF is None:

@@ -9,7 +9,7 @@ setuptools.setup(
 
     # general metadata
     name="plogs",
-    version="0.1.1",
+    version="0.1.2",
     author="Doug Rudolph",
     author_email="drudolph914@gmail.com",
 
@@ -20,18 +20,17 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
 
-    # Github URL
+    # GitHub URL
     url="https://github.com/11/plogs",
 
-    # takes note that the python modules are contained in the source folder
-    package_dir={"": "src:"},
-
-    # setuptools will find the python packages for us
-    packages=["src"],
+    # when downloading plogs, the user only needs access to the src/ directory
+    packages=["plogs"],
+    package_dir={"plogs": "src"},
 
     # specify what version of python plogs is targeting
     classifiers=[
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
