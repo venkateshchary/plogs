@@ -39,7 +39,7 @@ def check_config(pretty, show_levels, show_time, to_file, file_location, filenam
        # file_location and filename must be strings
         if not isinstance(file_location, str) or not isinstance(filename, str):
             raise TypeError('`filename` or `file_location` must be a non-empty string')
-        elif len(file_location) == 0 or len(filename) == 0
+        elif len(file_location) == 0 or len(filename) == 0:
             raise ValueError('`filename` or `file_location` must be a non-empty string')
 
         # file_location must exist
