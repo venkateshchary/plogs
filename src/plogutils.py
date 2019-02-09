@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from .logutils import LogLevel, Colors, Levels, check_config
+from .logutils import Levels, check_config
 
 import pprint
 import datetime
@@ -24,8 +24,8 @@ class _Logger:
 
     def __init__(self):
         # Instances of Color and Levels enum
-        self._colors = Colors.color
-        self._levels = LogLevel.level
+        self._colors = Levels.color
+        self._levels = Levels.level
 
         # Formatting variables
         self._show_levels = False
