@@ -40,14 +40,14 @@ It's recommend to do the following steps inside a `__init__.py` file at the root
 
 Pretty Logs' main feature is color coding different logging levels and statuses. The default logging levels are set mapped to:
 
-| Log Level         | Color |
-| ---               | --- |
-| logging.info	    | gray |
-| logging.status	| bold |
-| logging.success	| green |
-| logging.warning	| orange |
-| logging.error     | red |
-| logging.critical	| red highlights |
+| Log Level | Color |
+| --- | --- |
+| logging.info| gray |
+| logging.status | bold |
+| logging.success | green |
+| logging.warning | orange |
+| logging.error | red |
+| logging.critical | red highlights |
 
 
 ### Log to a File
@@ -83,15 +83,15 @@ Pretty Logs allows for a lot of customization. Customizing logs is done by editi
 The following are all the configurable variables:
 
 
-| Variable        | Type   | Format Keyword    | Description |
-| ---             | ---    | ---               | ---         |
-| `pretty`        | `bool` | `N/A`             | Setting to `True` will add color to logs, `False` will un-color logs |
-| `show_levels`   | `bool` | `{level}`        | Setting to `True` will show logging level in formatted log, `False` show no logging level |
-| `show_time`     | `bool` | `{time}`          | Setting to `True` will show time in formatted log, `False` doesn't show time |
-| `to_file`       | `bool` | `N/A`             | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
+| Variable | Type | Format Keyword | Description |
+| --- | --- | --- | --- |
+| `pretty` | `bool` | `N/A` | Setting to `True` will add color to logs, `False` will un-color logs |
+| `show_levels` | `bool` | `{level}` | Setting to `True` will show logging level in formatted log, `False` show no logging level |
+| `show_time` | `bool` | `{time}` | Setting to `True` will show time in formatted log, `False` doesn't show time |
+| `to_file` | `bool` | `N/A` | Setting to `True` writes logs to `file_location`, `False` writes to `standard output` |
 | `file_location` | `str`  | `{file_location}` | Default `file_location` is `/var/log/plogs/`, otherwise a file location of your choice |
-| `filename`      | `str`  | `{filename}`      | Default log file is `plog_01.log`, otherwise a filename of your choice |
-| `N\A`           | `N/A`  | `{msg}`           | Shows the log message in formatted log |
+| `filename` | `str`  | `{filename}` | Default log file is `plog_01.log`, otherwise a filename of your choice |
+| `N\A` | `N/A` | `{msg}` | Shows the log message in formatted log |
 
 
 An example of a formatted logs would be like such:
