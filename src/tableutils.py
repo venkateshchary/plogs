@@ -12,8 +12,6 @@ class Table:
         self.construct_table()
 
     def construct_table(self):
-        key_val_msg = '{}{}{}: {}{}{}'
-
         col_names = set()
         col_padding = []
 
