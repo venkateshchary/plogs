@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-from .logutils import LogLevel, Colors, Levels, check_config
+from .logutils import Levels, check_config
 
 import pprint
 import datetime
@@ -24,8 +24,8 @@ class _Logger:
 
     def __init__(self):
         # Instances of Color and Levels enum
-        self._colors = Colors.color
-        self._levels = LogLevel.level
+        self._colors = Levels.color
+        self._levels = Levels.level
 
         # Formatting variables
         self._show_levels = False
@@ -79,17 +79,8 @@ class _Logger:
 
         # {{NOTE: any log variables that are added must be get appended in here}}
         if self._fstr:
-            log = self._fstr
-
-            if self._show_levels:
-                log = log.replace('{level}', self._levels(log_lvl))
-            if self._show_time:
-                log = log.replace('{time}', str(datetime.datetime.now()))
-            if self._to_file:
-                log = log.replace('{filename}', self._filename)
-
-            # always need to replace msg
-            log = log.replace('{msg}', msg)
+            log = self._fstr.format(level=self._levels(log_lvl),
+                    time=str(datetime.datetime.now()), filename=self._filename, msg=msg)
 
         # colors the logs if self_.pretty == True
         if self._pretty:
