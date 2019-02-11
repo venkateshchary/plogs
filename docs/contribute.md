@@ -16,9 +16,9 @@ If you are new to using a terminal, you can also download the project by clickin
 
 
 ### Downloading python-virtualenv
-Creating a virtual environment is a key part to development. A virtual environment's main goal is to ensure you are developing
-with the correct version of python. Virtual environments can also isolate an installed python package to the directory you
-are developing in, as well as help avoid conflicts with your system version of python.
+Creating a virtual environment is a key part to development. A virtual environment's main goal is to ensure you are debugging
+with the correct version of python. Virtual environments also come with a lot feature such as isolate
+an installed `pip` packages to the directory of a project, as well as help avoid conflicts with your system version of python.
 
 In order to create a virtual environment, we need to install `python-virtualenv` with `pip`. If you don't already have `pip`,
 you might need to do some research on how to install `pip` for your machine. Feel free to give these blogs a look:
@@ -50,7 +50,7 @@ Some quick side-notes:
 
 ### Run our Virtual Environment & a Sanity Check
 When using virtual environments, it's important to make sure that you know how to check if you set everything up correctly.
-In order to know we are running things correctly, want to know `which python` are system defaults to. To check, type:
+To do so, want to know `which python` are system defaults to. To check, type:
 
 ```
 which python
@@ -71,6 +71,6 @@ Now, let's turn on our virtual environment with:
 source ./bin/activate
 ```
 
-Notice how when we run `which python` again, it will print out the path to where you download `plogs`.
+Notice how when we run `which python` again, it print out the path to where you download `plogs`.
 The main thing to note is that if you type `which python`, and the response is `/usr/bin/python`, you are either
 in the wrong directory, or the virtual environment isn't activated
