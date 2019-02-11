@@ -120,7 +120,7 @@ To make sure everything worked, running `ls dist/` should show a `.whl` and a `.
 (it's okay if your file names aren't exactly the same)
 
 ```
-ls dist/`
+ls dist/
 
 dist/
     ├── plogs-0.1.2-py3-none-any.whl
@@ -130,11 +130,20 @@ dist/
 Finally, you can locally install your latest build with:
 
 ```
-python steup.py install
+python setup.py install
 ```
 
 Running this command will install all your edits to your virtual environment. From there, you can open a
-python REPL and test your changes.
+python REPL and test your changes like so:
+
+```python3
+from plogs import get_logger
+logging = get_logger()
+
+### Test code here
+
+
+```
 
 
 ### Thank You
