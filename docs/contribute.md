@@ -48,7 +48,7 @@ Some quick side-notes:
 
 
 
-### Run our Virtual Environment & a Sanity Check
+### Run our Virtual Environment & Sanity Check
 When using virtual environments, it's important that you know how to check if everything is setup correctly.
 To do so, we want to know `which python` are system defaults to. To check, type:
 
