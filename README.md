@@ -10,17 +10,10 @@ can only print to.
 
 
 ### Install
-The easiest way to install Pretty Logs is to install via pip. [pypi link](https://pypi.org/project/plogs/)
+You can install Pretty Logs via pip. [pypi link](https://pypi.org/project/plogs/)
 
 ```
-$ pip install plogs
-```
-
-Is also possible to download and import Pretty Logs directly into your project. If you are you looking to do so, I
-recommend cloning the GitHub repository to ensure the plogs module hierarchy is kept the same.
-
-```
-$ git clone https://github.com/11/plogs.git
+$ pip install --upgrade plogs
 ```
 
 
@@ -121,31 +114,5 @@ logging.info('We got some info')
 <b>NOTE</b>: In order to format Pretty Logs you must put the variable you want written inside `{}` - ie like so: `{filename}`, `{file_location}`, `{levels}`, etc.
 These values will be substituted for the variable they represent
 
-
-### Log Tables
-```python3
-from plogs import get_logger
-logging = get_logger()
-
-class Example:
-
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-
-
-ex1 = Example(1, 2)
-ex2 = Example('a', 'b')
-
-logging.table(ex1, ex2)
-```
-The output would be like
-```
-+ --------------- +
-|     |  a  |  b  |
-+ --- | --- | --- +
-| ex1 |  1  |  2  |
-+ --- | --- | --- |
-| ex2 | 'a' | 'b' |
-+ --------------- +
-```
+### How can I Contribute?
+If you are looking to contribute, you can check out you the [how to contribute doc](https://github.com/11/plogs/blob/master/docs/contribute.md)
