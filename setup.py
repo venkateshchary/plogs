@@ -9,7 +9,7 @@ setuptools.setup(
 
     # general metadata
     name="plogs",
-    version="0.1.2",
+    version="0.1.4",
     author="Doug Rudolph",
     author_email="drudolph914@gmail.com",
 
