@@ -4,9 +4,15 @@
 # Author: Doug Rudolph
 # Created: February 21, 2019
 
+from src import logutils
 from unittest import TestCase
 
-class TestLevels(TestCase):
 
-    def test_info(self):
 
+class TestLogger(TestCase):
+
+    def test_log_levels(self):
+        pass
+
+    def test_config(self):
+        pass
