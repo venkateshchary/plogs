@@ -4,12 +4,12 @@
 # Author: Doug Rudolph
 # Created: February 21, 2019
 
-from unittest import TestCase
+import unittest
 
 from src import logutils
 
 
-class TestLogger(TestCase):
+class TestLogger(unittest.TestCase):
 
     def test_log_levels(self):
         pass
