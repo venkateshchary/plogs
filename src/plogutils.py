@@ -98,32 +98,3 @@ class _Logger:
                 fd.write(log + '\n')
         else:
             print(log)
-
-    def object(self, obj, params=None, *args):
-        key_val_msg = '{}{}{}: {}{}{}'
-
-        if args:
-            obj_attrs = vars(obj)
-
-            for arg in args:
-                if obj_attrs.get(arg, None):
-                    key = arg
-                    val = obj_attrs[arg]
-                    print(key_val_msg.format(OKBLUE, key, ENDC, FAIL, val, ENDC))
-
-        else:
-            for key in sorted(attr):
-                print(key_val_msg.format(OKBLUE, key, ENDC, FAIL, attr[key], ENDC))
-
-    def dic(self, dic):
-        if self._pretty:
-            pass
-        else:
-            pprint.pprint(dic)
-
-
-    def table(objs):
-        pass
-        # define padding
-        # find size of header & footer
-        # print columns

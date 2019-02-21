@@ -5,7 +5,6 @@
 # Created: November 19, 2018
 from enum import Enum
 
-import os
 
 class Levels(Enum):
     INFO = 1
@@ -32,10 +31,11 @@ class Levels(Enum):
         return _color_map[self]
 
 
-def check_config(pretty, show_levels, show_time, to_file, file_location, filename):
+def check_config(pretty=True, show_levels=False, show_time=False, to_file=False, file_location=None, filename=None):
 
     # if trying to write to file, the following cases must hold true
     if to_file:
+
        # file_location and filename must be strings
         if not isinstance(file_location, str) or not isinstance(filename, str):
             raise TypeError('`filename` or `file_location` must be a non-empty string')
