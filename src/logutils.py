@@ -30,7 +30,6 @@ class Levels(Enum):
             Levels.WARNING: '\033[93m',
             Levels.ERROR: '\033[91m',
             Levels.CRITICAL: '\u001b[41;1m',
-            'end': '\033[0m',
         }
         return _color_map[self]
 

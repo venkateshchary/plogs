@@ -3,7 +3,6 @@
 
 from .logutils import Levels, check_config
 
-import pprint
 import datetime
 
 
@@ -39,13 +38,24 @@ class _Logger:
         self._fstr = None
         self._logger = None
 
-        # define log function for each log level
-        self.info = lambda msg: self._log(msg, Levels.INFO)
-        self.status = lambda msg: self._log(msg, Levels.STATUS)
-        self.success = lambda msg: self._log(msg, Levels.SUCCESS)
-        self.warning = lambda msg: self._log(msg, Levels.WARNING)
-        self.error = lambda msg: self._log(msg, Levels.ERROR)
-        self.critical = lambda msg: self._log(msg, Levels.CRITICAL)
+
+    def info(self, msg):
+        self._log(msg, Levels.INFO)
+
+    def success(self, msg):
+        self._log(msg, Levels.SUCCESS)
+
+    def warning(self, msg):
+        self._log(msg, Levels.WARNING)
+
+    def critical(self, msg):
+        self._log(msg, Levels.CRITICAL)
+
+    def error(self, msg):
+        self._log(msg, Levels.ERROR)
+
+    def status(self, msg):
+        self._log(msg, Levels.STATUS)
 
     def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/', filename='plogs_01.log'):
         # check all possible issue with config variables
@@ -65,6 +75,7 @@ class _Logger:
         self._fstr = fstr
 
     def bind(self, logger):
+        """ Binds already existing logger to plogs logger """
         self.logger = logger
 
         self.info = self.logger.info
@@ -75,18 +86,25 @@ class _Logger:
         self.critical = self.logger.critical
 
     def _format(self, msg, log_lvl):
-        log = msg
+        formatted_log = msg
 
-        # {{NOTE: any log variables that are added must be get appended in here}}
+        # NOTE: any formatted_log variables that are added to `__init__`
+        # must also have an if statement and or included in the
+        # fstr.format function call
         if self._fstr:
-            log = self._fstr.format(level=self._levels(log_lvl),
-                    time=str(datetime.datetime.now()), filename=self._filename, msg=msg)
+            formatted_log = self._fstr.format(
+                level=self._levels(formatted_log_lvl),
+                time=str(datetime.datetime.now()),
+                filename=self._filename,
+                msg=msg
+            )
 
-        # colors the logs if self_.pretty == True
+        # colors the formatted_logs if self_.pretty == True
         if self._pretty:
-            log = self._colors(log_lvl) + log + self._colors('end')
+            end_color = '\033[0m'
+            formatted_log = self._colors(log_lvl) + log + end_color
 
-        return log
+        return formatted_log
 
     def _log(self, msg, log_lvl):
         log = self._format(msg, log_lvl)
