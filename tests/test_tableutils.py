@@ -6,5 +6,5 @@
 
 from unittest import TestCase
 
-def run_tests():
-    unittest.main()
+class TestTable(TestCase):
+    pass

@@ -1,19 +1,40 @@
+# -*- coding: utf8 -*-
+
+# File: plogs/tests/__main__.py
+# Author: Doug Rudolph
+# Created: February 21, 2019
+
 import sys
 sys.path.append('../src/')
 
-from . import test_logutils, test_tableutils
+from unittest import TextTestRunner, TestSuite, TestLoader
+
+from .test_logutils import TestLogger
+from .test_tableutils import TestTable
 
 
-def main():
-    # reference `run_tests` function in each test file
-    tests = [
-        test_logutils.run_tests,
-        test_tableutils.run_tests,
-    ]
+def create_test_suite():
+    """ Creates test suite and adds test cases"""
 
-    # run each test
-    for test in tests:
-        test()
+    test_cases = (TestLogger, TestTable)
+    test_suite = TestSuite()
+    test_loader = TestLoader()
+
+    for test_case in test_cases:
+        tests = test_loader.loadTestsFromTestCase(test_case)
+        test_suite.addTest(tests)
+
+    return test_suite
+
+def run_tests():
+    """ Get plogs test suite and run all tests """
+
+    # create test suite
+    test_suite = create_test_suite()
+
+    # run test suite
+    test_runner = TextTestRunner(verbosity=2)
+    test_runner.run(test_suite)
 
 if __name__ == '__main__':
-    main()
+    run_tests()
