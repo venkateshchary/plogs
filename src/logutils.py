@@ -1,9 +1,13 @@
 # -*- coding: utf8 -*-
 
+
 # File: logutils.py
 # Author: Doug Rudolph
 # Created: November 19, 2018
+
 from enum import Enum
+
+import os
 
 
 class Levels(Enum):
@@ -44,7 +48,7 @@ def check_config(pretty=True, show_levels=False, show_time=False, to_file=False,
 
         # file_location must exist
         if not os.path.exists(file_location):
-            #assumes that the error will just raise
+            # assumes that the error will just raise
             os.mkdir(file_location)
 
     # config variables must be type `bool`
