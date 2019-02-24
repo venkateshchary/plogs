@@ -1,3 +1,10 @@
+# -*- coding: utf8 -*-
+
+# File: setup.py
+# Author: Doug Rudolph
+# Created: November 19, 2018
+
+
 import setuptools
 
 # copies README into `long_description`

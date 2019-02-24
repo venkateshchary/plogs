@@ -1,7 +1,12 @@
-#!/usr/bin/env python
 # -*- coding: utf8 -*-
 
+# File: plogutils.py
+# Author: Doug Rudolph
+# Created: November 19, 2018
+
+
 from .logutils import Levels, check_config
+from .tableutils import construct_table
 
 import datetime
 
@@ -38,7 +43,6 @@ class _Logger:
         self._fstr = None
         self._logger = None
 
-
     def info(self, msg):
         self._log(msg, Levels.INFO)
 
@@ -57,9 +61,12 @@ class _Logger:
     def status(self, msg):
         self._log(msg, Levels.STATUS)
 
+    def table(self, objects):
+        table_str = construct_table(objects)
+        self._log(table_str, Levels.STATUS)
+
     def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/', filename='plogs_01.log'):
         # check all possible issue with config variables
-
         pretty, show_levels, show_time, to_file, file_location, filename = \
             check_config(pretty, show_levels, show_time, to_file, file_location, filename)
 
@@ -102,7 +109,7 @@ class _Logger:
         # colors the formatted_logs if self_.pretty == True
         if self._pretty:
             end_color = '\033[0m'
-            formatted_log = self._colors(log_lvl) + log + end_color
+            formatted_log = self._colors(log_lvl) + formatted_log + end_color
 
         return formatted_log
 

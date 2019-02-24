@@ -1,9 +1,9 @@
 # -*- coding: utf8 -*-
 
-
 # File: logutils.py
 # Author: Doug Rudolph
 # Created: November 19, 2018
+
 
 from enum import Enum
 

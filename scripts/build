@@ -1,0 +1,17 @@
+# !/bin/bash
+#
+# File: scripts/build
+# Author: Doug Rudolph
+# Created: February 23, 2018
+
+# uninstall plogs inside venv
+yes | pip uninstall plogs
+
+# remove current build inside dist folder
+yes | rm ./dist/*
+
+# generate updated version of plogs .whl and .dist file
+python setup.py bdist_wheel sdist
+
+# locally install updated build
+python setup.py install
