@@ -5,7 +5,7 @@
 # Created: October 19, 2018
 
 
-def _table_metadata(self, objects):
+def _table_metadata(objects):
     """ Goal of this function is collect metadata that helps generate the table
 
     Params:
@@ -95,7 +95,7 @@ def _header(longest_var, longest_column_vals, column_names):
     return header
 
 
-def _body(objects, longest_var, longest_column_vals, column_names):
+def _body(longest_var, longest_column_vals, column_names, objects):
     """ Takes in table metadata and creates the body of the table.
     The body is the part of the table that comes after the header.
     Each row of the body contains the object name, and data inside
@@ -133,7 +133,8 @@ def _body(objects, longest_var, longest_column_vals, column_names):
     # iterate over all the objects
     for obj in objects:
 
-        # calculate the padding bb
+        # calculate the padding
+        obj_name = str(obj)
         obj_name_padding = longest_var - len(obj_name)
 
         # prepare `row` for the next iteration by reseting it to `None`
@@ -170,8 +171,8 @@ def construct_table(objects):
     if len(objects) == 0 or objects is None:
         raise ValueError
 
-    longest_column_vals, longest_object, column_names = _table_metadata(objects)
+    longest_column_vals, longest_object, column_names = _table_metadata(objects=objects)
     header = _header(longest_object, longest_column_vals, column_names)
-    body = _body(objects, longest_object, longest_column_vals, column_names)
+    body = _body(longest_object, longest_column_vals, column_names, objects=objects)
 
     return header+body
