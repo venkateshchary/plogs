@@ -22,7 +22,7 @@ def _table_metadata(objects):
     if objects is None or len(objects) == 0:
         return None
 
-    # Objects that are being returned
+    # table metadata
     len_dict = {}
     longest_object = 0
     columns = set()
@@ -60,9 +60,9 @@ def _header(longest_var, longest_column_vals, column_names):
     Example:
         An example of a table header:
 
-        +----------------------------------+
-        |       | var1  |  var2   | var3   |
-        +----------------------------------+
+        +--------------------------------+
+        |     | var1  |  var2   | var3   |
+        +--------------------------------+
 
     Attributes:
         The first box doesn't contain any data because the first
@@ -168,6 +168,31 @@ def _body(longest_var, longest_column_vals, column_names, objects):
 
 
 def construct_table(objects):
+    """ Is the runner function for the entire table module. This function
+    takes in the list of objects, and threads together each part of the
+    table generating algorithm.
+
+    Attributes:
+        The table generating algorithm is broken down into 3 steps
+            1.) collecting table metadata
+            2.) constructing the header
+            3.) constructing the body
+
+        Each of these steps
+
+    Params:
+        objects (list): list of objects
+
+    Returns:
+        table (str): the actual table -- constructed of `head` and `body`
+
+    Todo:
+        * more rigorous testing
+        * `longest_column_vals`, `longest_object`, `column_names` need to be
+          renamed to something that makes more sense.
+        * experiment with better input values
+
+    """
     if len(objects) == 0 or objects is None:
         raise ValueError
 
@@ -175,4 +200,7 @@ def construct_table(objects):
     header = _header(longest_object, longest_column_vals, column_names)
     body = _body(longest_object, longest_column_vals, column_names, objects=objects)
 
-    return header+body
+    # the table is made up of the `header` and `body`
+    table = header + body
+
+    return table

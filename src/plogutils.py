@@ -93,7 +93,7 @@ class _Logger:
         self.critical = self.logger.critical
 
     def _format(self, msg, log_lvl):
-        formatted_log = msg
+        formatted_log = str(msg)
 
         # NOTE: any formatted_log variables that are added to `__init__`
         # must also have an if statement and or included in the
@@ -114,7 +114,11 @@ class _Logger:
         return formatted_log
 
     def _log(self, msg, log_lvl):
+        # - Attempt to format the log
+        #   nothing will happen if no format vars have been set
+        # - Also ensure that the entire log is of type strings
         log = self._format(msg, log_lvl)
+        log = str(log)
 
         # open and write to file if set to
         if self._to_file:
