@@ -100,7 +100,7 @@ class _Logger:
         # fstr.format function call
         if self._fstr:
             formatted_log = self._fstr.format(
-                level=self._levels(formatted_log_lvl),
+                level=self._levels(log_lvl),
                 time=str(datetime.datetime.now()),
                 filename=self._filename,
                 msg=msg
