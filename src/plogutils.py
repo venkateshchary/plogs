@@ -7,6 +7,7 @@
 
 from .logutils import Levels, check_config
 from .tableutils import construct_table
+from .errorutils import trace
 
 import datetime
 
