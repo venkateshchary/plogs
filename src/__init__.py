@@ -1,5 +1,5 @@
 name = 'plogs'
-__all__ = ['plogutils.py', 'logutils.py', 'tableutils.py',]
+__all__ = ['plogutils.py', 'logutils.py', 'tableutils.py', 'errorutils']
 
 
 from .plogutils import _get_logger

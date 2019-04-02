@@ -16,7 +16,7 @@ setuptools.setup(
 
     # general metadata
     name="plogs",
-    version="0.1.4",
+    version="0.1.7",
     author="Doug Rudolph",
     author_email="drudolph914@gmail.com",
 
@@ -25,7 +25,6 @@ setuptools.setup(
 
     # copies the README.md into `long_description` and notes that it is a markdown file
     long_description=long_description,
-    long_description_content_type="text/markdown",
 
     # GitHub URL
     url="https://github.com/11/plogs",

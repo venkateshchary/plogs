@@ -7,7 +7,7 @@
 
 from .logutils import Levels, check_config
 from .tableutils import construct_table
-from .errorutils import trace
+from .errorutils import functrace
 
 import datetime
 
@@ -65,6 +65,9 @@ class _Logger:
     def table(self, objects):
         table_str = construct_table(objects)
         self._log(table_str, Levels.STATUS)
+
+    def trace(self, func):
+        functrace(func)
 
     def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/', filename='plogs_01.log'):
         # check all possible issue with config variables
