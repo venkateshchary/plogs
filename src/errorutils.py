@@ -6,7 +6,7 @@
 
 import linecache
 
-def functrace(func):
+def _functrace(func, *args, **kwargs):
     """ Function decorator that formats the stack trace of a function
     if an exception is thrown.
 
@@ -15,19 +15,21 @@ def functrace(func):
         >>> def cause_error():
         >>>     error = 1/0
         >>>
-        >>> # Restults in formatted stacktrace
+        >>> # Results in formatted stack trace
+        >>>
 
     Args:
         func (function): decorated function
+        *args (args): arguments that might be in `func`
+        *kwargs (args): keyword arguments that might be in `func`
 
-    Returns:
-        void: if no error is thrown, or halts program if error is thrown
     """
 
     try:
-        func()
-    except Exception as err:
+        result = func(*args, **kwargs)
+        return result
 
+    except Exception as err:
         traceback = err.__traceback__
         while traceback:
             frame = traceback.tb_frame
