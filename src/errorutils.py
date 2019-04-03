@@ -38,6 +38,9 @@ def _functrace(func, *args, **kwargs):
         traceback = err.__traceback__
         traceback = traceback.tb_next
 
+        import pdb
+        pdb.set_trace()
+
         while traceback:
             # get the stack frame, filename, and line number of error
             frame = traceback.tb_frame
@@ -57,6 +60,6 @@ def _functrace(func, *args, **kwargs):
 
         # log final error message
         exception = str(err.__class__.__name__)
-        err_msg = str(err)
-        err_msg = f'{exception}: {err_msg}'
+        exception_msg = str(err)
+        err_msg = f'{exception}: {exception_msg}'
         print(err_msg)

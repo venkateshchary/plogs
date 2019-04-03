@@ -5,7 +5,7 @@
 # Created: November 19, 2018
 
 
-from .logutils import Levels, check_config
+from .logutils import Levels, Colors, check_config
 from .tableutils import construct_table
 
 import datetime
@@ -108,7 +108,7 @@ class _Logger:
 
         # colors the formatted_logs if self_.pretty == True
         if self._pretty:
-            end_color = '\033[0m'
+            end_color = str(Colors.END)
             formatted_log = self._colors(log_lvl) + formatted_log + end_color
 
         return formatted_log

@@ -10,6 +10,16 @@ from enum import Enum
 import os
 
 
+class Colors:
+    GRAY = '\033[94m'
+    WHITE = '\033[1m'
+    GREEN = '\033[92m'
+    ORANGE = '\033[93m'
+    RED = '\033[91m'
+    RED_HIGHLIGHT = '\u001b[41;1m'
+    END = '\033[0m'
+
+
 class Levels(Enum):
     INFO = 1
     SUCCESS = 2
@@ -22,14 +32,13 @@ class Levels(Enum):
         return self.name
 
     def color(self):
-        # TODO: fix the fact that passing in 'end' is necessary and "proper use."
         _color_map = {
-            Levels.INFO: '\033[94m',
-            Levels.STATUS: '\033[1m',
-            Levels.SUCCESS: '\033[92m',
-            Levels.WARNING: '\033[93m',
-            Levels.ERROR: '\033[91m',
-            Levels.CRITICAL: '\u001b[41;1m',
+            Levels.INFO: Colors.GRAY,
+            Levels.STATUS: Colors.WHITE,
+            Levels.SUCCESS: Colors.GREEN,
+            Levels.WARNING: Colors.ORANGE,
+            Levels.ERROR: Colors.RED,
+            Levels.CRITICAL: Colors.RED_HIGHLIGHT,
         }
         return _color_map[self]
 
