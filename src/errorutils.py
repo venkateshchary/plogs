@@ -4,6 +4,8 @@
 # Author: Doug Rudolph
 # Created: March 31, 2019
 
+from .logutils import Colors
+
 import linecache
 
 def _functrace(func, *args, **kwargs):
@@ -21,11 +23,6 @@ def _functrace(func, *args, **kwargs):
         func (function): decorated function
         args (*var): arguments that might be in `func`
         kwargs (**var): keyword arguments that might be in `func`
-
-    TODO:
-        *print the exception name
-        *get the module name in the output
-        *actually color code output
     """
     try:
         # try running decorated function and see if an error occurs
@@ -38,9 +35,6 @@ def _functrace(func, *args, **kwargs):
         traceback = err.__traceback__
         traceback = traceback.tb_next
 
-        import pdb
-        pdb.set_trace()
-
         while traceback:
             # get the stack frame, filename, and line number of error
             frame = traceback.tb_frame
@@ -52,7 +46,7 @@ def _functrace(func, *args, **kwargs):
             src_code = linecache.getline(filename, lineno, frame.f_globals)
 
             # generate and print error message
-            err_msg = f'File "{filename}", line {lineno}, ...\n{src_code}'
+            err_msg = f'File "{Colors.GREEN}{filename}{Colors.END}", line {Colors.ORANGE}{lineno}{Colors.END}, {Colors.GRAY}...{Colors.END}\n{src_code}'
             print(err_msg)
 
             # go to next stack frame
@@ -61,5 +55,5 @@ def _functrace(func, *args, **kwargs):
         # log final error message
         exception = str(err.__class__.__name__)
         exception_msg = str(err)
-        err_msg = f'{exception}: {exception_msg}'
+        err_msg = f'{Colors.RED}{exception}{Colors.END}: {exception_msg}'
         print(err_msg)
