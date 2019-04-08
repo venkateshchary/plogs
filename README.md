@@ -1,20 +1,21 @@
 # plogs — Pretty Logs
 
-### Project Goals
-In the beginning, the goal of Pretty Logs was to create a colorful logging system designed for scalable projects. Later,
-my vision for Pretty Logs widened in scope to also include useful debugging tools that are found in JavaScript and
-aren't that readily available in Python.
-
-In the future, we anticipate better control to configure logging settings and a debugging log level where debug tools
-can only print to.
-
 
 ### Install
-You can install Pretty Logs via pip. [pypi link](https://pypi.org/project/plogs/)
+You can install Pretty Logs [via pip](https://pypi.org/project/plogs/).
 
 ```
-$ pip install --upgrade plogs
+$ pip install plogs
 ```
+
+### Features
+- Offers a ready to use logger -- no boilerplate config needed
+- Log out to files, stdout, or any file-descriptor you like
+- Pretty Logs is thread-safe and multiprocess-safe
+- Format your logs with Python3.6's modern string formatting
+- Customizable log levels
+- Stylized Debug tools
+- Get insights into errors with color-coded stack traces
 
 
 ### Setup
