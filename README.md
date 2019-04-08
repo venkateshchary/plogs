@@ -136,7 +136,7 @@ def error():
 Plogs also offers `@plogs.deeptrace`. Plogs' `deeptrace` function is another method decorator that can offer more insight.
 `@plogs.deeptrace` will specifically show a color-coded stack trace and the state of each variable in the error-prone
 stack frame. *Note* - `deeptrace` is not optimized for performance and can be slow to produce an error
-message on functions with an abnormally amount of variables'
+message on functions with an abnormal amount of variables.
 
 ```python3
 import plogs
