@@ -93,25 +93,25 @@ class _Logger:
         self.critical = self.logger.critical
 
     def _format(self, msg, log_lvl):
-        formatted_log = str(msg)
+        log_msg = str(msg)
 
-        # NOTE: any formatted_log variables that are added to `__init__`
+        # NOTE: any `log_msg` variables that are added to `__init__`
         # must also have an if statement and or included in the
-        # fstr.format function call
+        # _fstr.format function call
         if self._fstr:
-            formatted_log = self._fstr.format(
+            log_msg = self._fstr.format(
                 level=self._levels(log_lvl),
                 time=str(datetime.datetime.now()),
                 filename=self._filename,
                 msg=msg
             )
 
-        # colors the formatted_logs if self_.pretty == True
+        # colors the `log_msg` if self._pretty == True
         if self._pretty:
             end_color = str(Colors.END)
-            formatted_log = self._colors(log_lvl) + formatted_log + end_color
+            log_msg = self._colors(log_lvl) + log_msg + end_color
 
-        return formatted_log
+        return log_msg
 
     def _log(self, msg, log_lvl):
         # - Attempt to format the log
