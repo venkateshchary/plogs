@@ -32,7 +32,7 @@ It's recommend to do the following steps inside a `__init__.py` file at the root
 
 ### Log with Colors
 
-Pretty Logs' main feature is color coding different logging levels and statuses. The default logging levels are set mapped to:
+Pretty Logs' main feature is color-coding logging levels and statuses. The default logging levels are set mapped to:
 
 | Log Level | Color |
 | --- | --- |
@@ -57,7 +57,7 @@ logging.info('this is will be written to a file')
 ```
 
 By default, files are written to `/var/log/plogs/plog_01.log`. `/var/log/` is chosen as the default directory because it is commonly used on unix based machines and in
-docker images services.
+docker images.
 
 If you are looking to use another filename and location, it can simply be edited like such:
 
@@ -66,7 +66,7 @@ logging.config(to_file=True, file_location='your/filepath/here/', filename='new_
 ```
 
 <b>Note</b>: It's recommended to view colored logs with the `less` terminal command - if `less` doesn't work be default, `less -r` is worth trying. Also, Pretty Logs
-was not designed to show colored files in Vim, Atom, Sublime, and other popular text editors.
+was not designed to show colored files in Vim, Emacs, Atom, Sublime, and other popular text editors.
 
 
 
@@ -88,14 +88,14 @@ The following are all the configurable variables:
 | `N\A` | `N/A` | `{msg}` | Shows the log message in formatted log |
 
 
-An example of a formatted logs would be like such:
+An example of a formatted log would be like such:
 
 ```python3
 from plogs import get_logger
 
 logging = get_logger()
 
-# configure plogs to allow logging level and date/time
+# configure plogs to print logging level and date/time to logs
 logging.config(show_levels=True, show_time=True)
 
 # config logs with the `{level}` keyword to show the logging level,
@@ -114,6 +114,42 @@ logging.info('We got some info')
 
 <b>NOTE</b>: In order to format Pretty Logs you must put the variable you want written inside `{}` - ie like so: `{filename}`, `{file_location}`, `{levels}`, etc.
 These values will be substituted for the variable they represent
+
+
+### Debugging
+
+Debugging is no simple task and Plogs' tools are designed to make debugging easier. The first tool Plogs has to offer is
+`@plogs.trace`. Plogs' `trace` function is a method decorator that will format and color-code your stack trace if your method
+throws an error. `@plogs.trace` will not change your logs if the decorated function runs as normal.
+
+```python3
+import plogs
+
+logging = plogs.get_logger()
+
+@plogs.trace
+def error():
+    print('dividing by zero error')
+    val = 100 / 0
+```
+
+Plogs also offers `@plogs.deeptrace`. Plogs' `deeptrace` function is another method decorator that can offer more insight.
+`@plogs.deeptrace` will specifically show a color-coded stack trace and the state of each variable in the error-prone
+stack frame. *Note* - `deeptrace` is not optimized for performance and can be slow to produce an error
+message on functions with an abnormally amount of variables'
+
+```python3
+import plogs
+
+logging = plogs.get_logger()
+
+@plogs.deeptrace
+def error():
+    x = 100
+    y = 0
+    val = x / y
+```
+
 
 ### How can I Contribute?
 If you are looking to contribute, you can check out you the [how to contribute doc](https://github.com/11/plogs/blob/master/docs/contribute.md)
