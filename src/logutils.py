@@ -1,5 +1,4 @@
 # -*- coding: utf8 -*-
-
 # File: logutils.py
 # Author: Doug Rudolph
 # Created: November 19, 2018
@@ -43,10 +42,10 @@ class Levels(Enum):
         return _color_map[self]
 
 
-def check_config(pretty=True, show_levels=False, show_time=False, to_file=False, file_location=None, filename=None):
+def check_config(pretty=True, file_location=None, filename=None):
 
     # if trying to write to file, the following cases must hold true
-    if to_file:
+    if file_location and filename:
 
        # file_location and filename must be strings
         if not isinstance(file_location, str) or not isinstance(filename, str):
@@ -60,15 +59,7 @@ def check_config(pretty=True, show_levels=False, show_time=False, to_file=False,
             os.mkdir(file_location)
 
     # config variables must be type `bool`
-    if not isinstance(pretty, bool) or not isinstance(show_levels, bool)\
-            or not isinstance(show_time, bool) or not isinstance(to_file, bool):
-        raise TypeError(
-            'One of the following config variables is not of type `bool`:\n ' +\
-            'pretty: ' + pretty + '\n' +\
-            'show_levels: ' + show_levels + '\n' +\
-            'show_time: ' + show_time + '\n' +\
-            'to_file: ' + to_file
-        )
-
+    if not isinstance(pretty, bool):
+        raise TypeError('pretty config variable is not of type `bool`:\n pretty: {}\n'.format(pretty))
     # return updated vars
-    return pretty, show_levels, show_time, to_file, file_location, filename
+    return pretty, file_location, filename

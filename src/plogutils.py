@@ -31,15 +31,12 @@ class _Logger:
         self._colors = Levels.color
         self._levels = Levels.level
 
-        # Formatting variables
-        self._show_levels = False
-        self._show_time = False
-        self._pretty = True
-
         # Config Varables
-        self._to_file = False
-        self._file_location = '/var/log/plogs/'
-        self._filename = 'plogs_01.log'
+        self._pretty = True
+        self._file_location = None
+        self._filename = None
+
+        # Log Variables
         self._fstr = None
         self._logger = None
 
@@ -65,16 +62,13 @@ class _Logger:
         table_str = construct_table(objects)
         self._log(table_str, Levels.STATUS)
 
-    def config(self, pretty=True, show_levels=False, show_time=False, to_file=False, file_location='/var/log/plogs/', filename='plogs_01.log'):
+    def config(self, pretty=True, file_location='/var/log/plogs/', filename='plogs_01.log'):
         # check all possible issue with config variables
-        pretty, show_levels, show_time, to_file, file_location, filename = \
-            check_config(pretty, show_levels, show_time, to_file, file_location, filename)
+        pretty, to_file, file_location, filename = \
+            check_config(pretty,  to_file, file_location, filename)
 
         # store config variables
         self._pretty = pretty
-        self._show_levels = show_levels
-        self._show_time = show_time
-        self._to_file = to_file
         self._file_location = file_location
         self._filename = filename
 
@@ -114,14 +108,14 @@ class _Logger:
         return log_msg
 
     def _log(self, msg, log_lvl):
-        # - Attempt to format the log
-        #   nothing will happen if no format vars have been set
+        # - Attempt to format the log, nothing will happen if
+        #   no format vars have been set
         # - Also ensure that the entire log is of type strings
         log = self._format(msg, log_lvl)
         log = str(log)
 
-        # open and write to file if set to
-        if self._to_file:
+        # open and write to file if file_location and filename are configured
+        if self._file_location and self._filename:
             file_dest = '{}{}'.format(self._file_location, self._filename)
             with open(file_dest, 'a+') as fd:
                 fd.write(log + '\n')

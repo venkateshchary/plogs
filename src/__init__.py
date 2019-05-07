@@ -15,7 +15,7 @@ from .errorutils import _functrace
 def trace(func):
 
     def wrapper(*args, **kwargs):
-        return _functrace(func)
+        return _functrace(func, *args, **kwargs)
 
     return wrapper
 
